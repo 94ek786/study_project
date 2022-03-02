@@ -1,0 +1,159 @@
+.jumbotron {
+    padding: 4rem 2rem;
+    margin-bottom: 2rem;
+    background-color: var(--bs-light);
+    border-radius: .3rem;
+}
+
+#intro .jumbotron {
+    height: 70vh;
+    margin-bottom: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+p,
+a,
+input,
+label,
+textarea,
+span,
+ul,
+li {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#intro h1 {
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+#intro .container {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+header nav img {
+    width: 160px;
+}
+
+header li {
+    margin: 0 10px;
+}
+
+h3 {
+    font-size: 36px;
+    line-height: 1.5;
+}
+
+p {
+    color: #707070;
+}
+
+p.lead {
+    color: black;
+}
+
+#second {
+    padding: 80px 0px;
+}
+
+#second h3 {
+    margin-bottom: 80px;
+}
+
+#second img {
+    width: 100px;
+    margin-bottom: 13px;
+}
+
+#latest {
+    padding: 80px 0px;
+    background: rgb(248, 248, 248);
+}
+
+#latest h3 {
+    margin-bottom: 0px;
+}
+
+img {
+    max-width: 100%;
+}
+
+#latest .upper {
+    position: relative;
+}
+
+#latest .innertext {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+}
+
+#latest .innertext span {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 6px 15px;
+    border-radius: 20px;
+}
+
+#latest .lower h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+#latest .outer {
+    background: white;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0, 0.08);
+}
+
+#latest .lower {
+    padding: 6px 20px 20px 20px;
+}
+
+#latest a {
+    color: black;
+    text-decoration: none;
+}
+
+.d-flex a {
+    color: black;
+    text-decoration: none;
+}
+
+header nav {
+    background: white;
+}
+
+footer {
+    border-top: solid 1px #c9c9c9;
+    padding: 80px 0px;
+}
+
+footer img {
+    width: 110px;
+    margin-bottom: 26px;
+}
+
+footer h4 {
+    margin-bottom: 26px;
+}
+
+footer a {
+    color: #f05f5c;
+}
+
+#select td {
+    vertical-align: text-top;
+}
