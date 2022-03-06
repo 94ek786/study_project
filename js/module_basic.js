@@ -11,20 +11,20 @@ function Mnavbar(NULL) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">\
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">\
                     <li class="nav-item">\
-                        <a class="nav-link" href="#linktosearch">租屋</a>\
+                        <div class="citydropdown"></div>\
                     </li>\
                     <li class="nav-item dropdown">\
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">產品之類的</a>\
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">其他連結</a>\
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">\
-                            <li><a class="dropdown-item" href="https://www.youtube.com/watch?v=Py21QCndbxc">產品一號</a></li>\
-                            <li><a class="dropdown-item" href="https://www.nvidia.com/zh-tw/geforce/graphics-cards/30-series/rtx-3060-3060ti/">慘品二號</a></li>\
+                            <li><a class="dropdown-item" href="https://www.youtube.com/watch?v=Py21QCndbxc">一號</a></li>\
+                            <li><a class="dropdown-item" href="https://www.nvidia.com/zh-tw/geforce/graphics-cards/30-series/rtx-3060-3060ti/">二號</a></li>\
                         </ul>\
                     </li>\
                 </ul>\
                 <span class="d-flex">\
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">\
                     <li class="nav-item">\
-                        <a class="nav-link" href="#OTHERS">其他資訊</a>\
+                        <a class="nav-link" href="#login">登入</a>\
                     </li>\
                     </ul>\
                 </span>\
@@ -63,7 +63,69 @@ function Mfooter(NULL) {
     </div>'
 }
 
+function citydropdown(NULL) {
+    for (let loop of document.querySelectorAll('.citydropdown')) {
+        loop.innerHTML = '\
+                    <div class="dropdown">\
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">\
+                            租屋\
+                        </button>\
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">\
+                            <table id="select">\
+                                <tr>\
+                                    <th>\
+                                        <li class="dropdown-header">北部</li>\
+                                    </th>\
+                                    <th>\
+                                        <li class="dropdown-header">中部</li>\
+                                    </th>\
+                                    <th>\
+                                        <li class="dropdown-header">南部</li>\
+                                    </th>\
+                                    <th>\
+                                        <li class="dropdown-header">東部及外島</li>\
+                                    </th>\
+                                </tr>\
+                                <tr>\
+                                    <td>\
+                                        <li><a class="dropdown-item" href="search.html?city=台北市">台北市</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=新北市">新北市</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=桃園市">桃園市</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=新竹市">新竹市</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=新竹縣">新竹縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=宜蘭縣">宜蘭縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=基隆市">基隆市</a></li>\
+                                    </td>\
+                                    <td>\
+                                        <li><a class="dropdown-item" href="search.html?city=台中市">台中市</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=彰化縣">彰化縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=雲林縣">雲林縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=苗栗縣">苗栗縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=南投縣">南投縣</a></li>\
+                                    </td>\
+                                    <td>\
+                                        <li><a class="dropdown-item" href="search.html?city=高雄市">高雄市</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=台南市">台南市</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=嘉義市">嘉義市</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=嘉義縣">嘉義縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=屏東縣">屏東縣</a></li>\
+                                    </td>\
+                                    <td>\
+                                        <li><a class="dropdown-item" href="search.html?city=台東縣">台東縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=花蓮縣">花蓮縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=澎湖縣">澎湖縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=金門縣">金門縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.html?city=連江縣">連江縣</a></li>\
+                                    </td>\
+                                </tr>\
+                            </table>\
+                        </ul>\
+                    </div>';
+    }
+}
+
 window.onload = function() {
     Mfooter();
     Mnavbar();
+    citydropdown();
 }

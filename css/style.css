@@ -157,3 +157,9 @@ footer a {
 #select td {
     vertical-align: text-top;
 }
+
+.navbar .dropdown .btn {
+    color: gray;
+    background-color: #fff;
+    border-color: #fff;
+}

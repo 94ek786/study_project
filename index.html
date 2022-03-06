@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/module_basic.js"></script>
@@ -23,61 +24,7 @@
                 <div class="col-md-12">
                     <h1>智能合約租屋平台</h1>
                     <p>使用區塊鍊技術以保證租賃雙方的權益</p>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-magnifying-glass"></i>搜尋
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <table id="select">
-                                <tr>
-                                    <th>
-                                        <li class="dropdown-header">北部</li>
-                                    </th>
-                                    <th>
-                                        <li class="dropdown-header">中部</li>
-                                    </th>
-                                    <th>
-                                        <li class="dropdown-header">南部</li>
-                                    </th>
-                                    <th>
-                                        <li class="dropdown-header">東部及外島</li>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <li><a class="dropdown-item" href="#linktosearch">台北市</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">新北市</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">桃園市</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">新竹市</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">新竹縣</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">宜蘭縣</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">基隆市</a></li>
-                                    </td>
-                                    <td>
-                                        <li><a class="dropdown-item" href="#linktosearch">台中市</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">彰化縣</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">雲林縣</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">苗栗縣</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">南投縣</a></li>
-                                    </td>
-                                    <td>
-                                        <li><a class="dropdown-item" href="#linktosearch">高雄市</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">台南市</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">嘉義市</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">嘉義縣</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">屏東縣</a></li>
-                                    </td>
-                                    <td>
-                                        <li><a class="dropdown-item" href="#linktosearch">台東縣</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">花蓮縣</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">澎湖縣</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">金門縣</a></li>
-                                        <li><a class="dropdown-item" href="#linktosearch">連江縣</a></li>
-                                    </td>
-                                </tr>
-                            </table>
-                        </ul>
-                    </div>
+                    <div class="citydropdown"></div>
                 </div>
             </div>
         </div>
@@ -91,10 +38,70 @@
                         <div class="col-md-2">
                         </div>
                         <div class="col-md-10 text-start">
-                            <p class="lead">小標題東東</p>
-                            <p>寫一些有的沒有的簡介之類的東東內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文</p>
+                            <p class="lead">簡介</p>
+                            <p>簡介</p>
                         </div>
                         <div class="col-md-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="latest">
+        <a name="NEWS"></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3>最新出租</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="outer">
+                        <a href="404ERROR.html">
+                            <div class="upper">
+                                <img src="img/testimg16-9.png">
+                                <div class="innertext">
+                                    <span>狀態</span>
+                                </div>
+                            </div>
+                            <div class="lower">
+                                <h3>標題</h3>
+                                <span>簡介</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="outer">
+                        <a href="404ERROR.html">
+                            <div class="upper">
+                                <img src="img/testimg16-9.png">
+                                <div class="innertext">
+                                    <span>狀態</span>
+                                </div>
+                            </div>
+                            <div class="lower">
+                                <h3>標題</h3>
+                                <span>簡介</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="outer">
+                        <a href="404ERROR.html">
+                            <div class="upper">
+                                <img src="img/testimg16-9.png">
+                                <div class="innertext">
+                                    <span>狀態</span>
+                                </div>
+                            </div>
+                            <div class="lower">
+                                <h3>標題</h3>
+                                <span>簡介</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
