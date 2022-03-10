@@ -17,7 +17,7 @@ function Mnavbar(NULL) {
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">其他連結</a>\
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">\
                             <li><a class="dropdown-item" href="https://www.youtube.com/watch?v=Py21QCndbxc">一號</a></li>\
-                            <li><a class="dropdown-item" href="https://www.nvidia.com/zh-tw/geforce/graphics-cards/30-series/rtx-3060-3060ti/">二號</a></li>\
+                            <li><a class="dropdown-item" href="https://youtu.be/Zx4nMqR3jAk">二號</a></li>\
                         </ul>\
                     </li>\
                 </ul>\
@@ -61,6 +61,10 @@ function Mfooter(NULL) {
             </div>\
         </div>\
     </div>'
+}
+
+function empty(NULL) {
+    document.getElementById('empty').innerHTML = '<div style="height:57px;background: black"></div>'
 }
 
 function citydropdown(NULL) {
@@ -124,8 +128,9 @@ function citydropdown(NULL) {
     }
 }
 
-window.onload = function() {
+$(document).ready(function() {
     Mfooter();
     Mnavbar();
+    empty();
     citydropdown();
-}
+});
