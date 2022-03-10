@@ -64,7 +64,7 @@ function Mfooter(NULL) {
 }
 
 function empty(NULL) {
-    document.getElementById('empty').innerHTML = '<div style="height:57px;background: black"></div>'
+    document.getElementById('empty').innerHTML = '<div style="height:57px;background: black">empty</div>'
 }
 
 function citydropdown(NULL) {
