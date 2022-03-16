@@ -1,6 +1,6 @@
 function Mnavbar(NULL) {
     document.getElementById('Mnavbar').innerHTML = '<div class="container">\
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light">\
+    <nav class="navbar fixed-top navbar-expand-md navbar-light">\
         <div class="container-fluid">\
             <a class="navbar-brand" href="index.html">\
                 首頁\
@@ -9,7 +9,7 @@ function Mnavbar(NULL) {
                 <span class="navbar-toggler-icon"></span>\
             </button>\
             <div class="collapse navbar-collapse" id="navbarSupportedContent">\
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">\
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">\
                     <li class="nav-item">\
                         <div class="citydropdown"></div>\
                     </li>\
@@ -22,7 +22,7 @@ function Mnavbar(NULL) {
                     </li>\
                 </ul>\
                 <span class="d-flex">\
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">\
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">\
                     <li class="nav-item">\
                         <a class="nav-link" href="#login">登入</a>\
                     </li>\
@@ -64,7 +64,7 @@ function Mfooter(NULL) {
 }
 
 function empty(NULL) {
-    document.getElementById('empty').innerHTML = '<div style="height:57px;background: black">empty</div>'
+    document.getElementById('empty').innerHTML = '<div style="height:56px;background: black">empty</div>'
 }
 
 function citydropdown(NULL) {
