@@ -4,6 +4,14 @@ function search_condition(NULL) {
     document.getElementById('search_condition').innerHTML = sccity;
 }
 
+function searching(NULL){
+
+}
+
+function searching_detail(NULL){
+
+}
+
 $(document).ready(function() {
     search_condition();
 });
