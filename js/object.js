@@ -1,4 +1,4 @@
-function objectA(NULL){
+function objectA(NULL) {
     for (let loop of document.querySelectorAll('.objectA')) {
         loop.innerHTML = '\
                             <div class="outer">\
@@ -20,5 +20,7 @@ function objectA(NULL){
 }
 
 $(document).ready(function() {
-    objectA();
+    try {
+        objectA();
+    } catch {}
 });

@@ -10,7 +10,7 @@ function Mnavbar(NULL) {
             </button>\
             <div class="collapse navbar-collapse" id="navbarSupportedContent">\
                 <ul class="navbar-nav me-auto">\
-                    <li class="nav-item dropdown citydropdown mb-6">\
+                    <li class="nav-item dropdown citydropdown mb-6">租屋\
                     </li>\
                     <li class="nav-item dropdown">\
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">其他連結</a>\
@@ -23,7 +23,7 @@ function Mnavbar(NULL) {
                 <span class="d-flex">\
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">\
                     <li class="nav-item">\
-                        <a class="nav-link" href="#login">登入</a>\
+                        <a class="nav-link" href="login.html">登入</a>\
                     </li>\
                     </ul>\
                 </span>\
@@ -63,14 +63,15 @@ function Mfooter(NULL) {
 }
 
 function empty(NULL) {
-    document.getElementById('empty').innerHTML = '<div style="height:56px;background: black">empty</div>'
+    document.getElementById('empty').innerHTML = '<div style="height:56px;background: gray">empty</div>'
 }
 
 function citydropdown(NULL) {
     for (let loop of document.querySelectorAll('.citydropdown')) {
+        i = loop.innerHTML
         loop.innerHTML = '\
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">\
-                            租屋\
+                            ' + i + '\
                         </button>\
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">\
                             <div class="row">\
@@ -114,8 +115,14 @@ function citydropdown(NULL) {
 }
 
 $(document).ready(function() {
-    Mfooter();
-    Mnavbar();
-    empty();
-    citydropdown();
+    try {
+        Mnavbar();
+        empty();
+    } catch { console.log(naverror) }
+    try {
+        Mfooter();
+    } catch {}
+    try {
+        citydropdown();
+    } catch {}
 });
