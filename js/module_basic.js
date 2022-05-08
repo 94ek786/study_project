@@ -22,8 +22,8 @@ function Mnavbar(NULL) {
                 </ul>\
                 <span class="d-flex">\
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">\
-                    <li class="nav-item">\
-                        <a class="nav-link" href="login.html">登入</a>\
+                    <li class="nav-item ilogin">\
+                        <a class="nav-link" style="cursor: pointer" onclick="to_login()">登入</a>\
                     </li>\
                     </ul>\
                 </span>\
@@ -32,6 +32,7 @@ function Mnavbar(NULL) {
     </nav>\
 </div>'
 }
+
 
 function Mfooter(NULL) {
     document.getElementById('Mfooter').innerHTML = '<a name="OTHERS"></a>\
@@ -114,15 +115,46 @@ function citydropdown(NULL) {
     }
 }
 
+function is_login() {
+    //抓取是否登入
+    if (window.location.href.split('login=')[1].split('&')[0] == 'True') {
+        for (let loop of document.querySelectorAll('.ilogin')) {
+            loop.classList.add('dropdown')
+            loop.innerHTML = '\
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">會員頭像</a>\
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">\
+                <li><a class="dropdown-item" href="member.html">會員資料</a></li>\
+                <li><a class="dropdown-item" href="message.html">訊息</a></li>\
+            </ul>';
+        }
+    }
+}
+
+function to_login() {
+    if (window.location.href.includes('login.html')) {
+        location.href = window.location.href
+    } else {
+        location.href = 'login.html?lpath=' + window.location.href;
+    }
+}
+
 $(document).ready(function() {
     try {
         Mnavbar();
         empty();
-    } catch { console.log(naverror) }
+    } catch { console.log('naverror') }
     try {
         Mfooter();
     } catch {}
     try {
         citydropdown();
     } catch {}
+    try {
+        is_login();
+    } catch {}
 });
+
+document.write('\
+    <header id="Mnavbar">\
+    </header>\
+    <section id="empty"></section>');

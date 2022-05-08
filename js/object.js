@@ -1,8 +1,10 @@
 function objectA(NULL) {
+    i = 0;
     for (let loop of document.querySelectorAll('.objectA')) {
+        i++;
         loop.innerHTML = '\
                             <div class="outer">\
-                                <a href="404ERROR.html">\
+                                <a href="house.html?id=' + String(i) + '">\
                                     <div class="upper">\
                                         <img src="img/testimg16-9.png">\
                                         <div class="innertext">\
@@ -15,7 +17,7 @@ function objectA(NULL) {
                                     </div>\
                                 </a>\
                             </div>';
-        loop.className = 'col-md'
+        loop.className = 'col-md';
     }
 }
 
