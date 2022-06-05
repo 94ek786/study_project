@@ -19,10 +19,10 @@
     <section>
         <div class="container">
             帳號
-            <input name="account" data-index="1" onkeydown="next_input(event)">
+            <input autofocus required name="account" data-index="1" onkeydown="next_input(event)">
             <p></p>
             密碼
-            <input type="password" name="password" data-index="2" onkeydown="next_input(event)">
+            <input required type="password" name="password" data-index="2" onkeydown="next_input(event)">
             <p></p>
             <button data-index="3" onclick="loginC()">登入</button>
         </div>

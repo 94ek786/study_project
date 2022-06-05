@@ -163,3 +163,7 @@ footer a {
     background-color: #fff;
     border-color: #fff;
 }
+
+footer {
+    margin-top: 99px;
+}

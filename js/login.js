@@ -7,5 +7,9 @@ function next_input(event) {
 };
 
 function loginC() {
-    location.href = window.location.href.split('lpath=')[1].split('&')[0] + '?login=True';
+    if (window.location.href.split('lpath=')[1].split('&')[0] == 'asdf') {
+        location.href = 'member.html'
+    } else {
+        location.href = window.location.href.split('lpath=')[1].split('&')[0] + '?login=True';
+    }
 }

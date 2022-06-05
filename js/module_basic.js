@@ -116,8 +116,7 @@ function citydropdown(NULL) {
 }
 
 function is_login() {
-    //抓取是否登入
-    if (window.location.href.split('login=')[1].split('&')[0] == 'True') {
+    if (window.location.href.split('login=')[1].split('&')[0] == 'True') { //抓取是否登入
         for (let loop of document.querySelectorAll('.ilogin')) {
             loop.classList.add('dropdown')
             loop.innerHTML = '\
@@ -134,7 +133,7 @@ function to_login() {
     if (window.location.href.includes('login.html')) {
         location.href = window.location.href
     } else {
-        location.href = 'login.html?lpath=' + window.location.href;
+        location.href = 'login.html?lpath=asdf';
     }
 }
 
@@ -157,4 +156,4 @@ $(document).ready(function() {
 document.write('\
     <header id="Mnavbar">\
     </header>\
-    <section id="empty"></section>');
+    <div id="empty"></div>');
