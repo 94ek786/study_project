@@ -8,7 +8,7 @@ function next_input(event) {
 
 function loginC() {
     if (window.location.href.split('lpath=')[1].split('&')[0] == 'asdf') {
-        location.href = 'member.html'
+        location.href = 'member.html?login=True'
     } else {
         location.href = window.location.href.split('lpath=')[1].split('&')[0] + '?login=True';
     }

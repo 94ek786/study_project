@@ -5,6 +5,14 @@
     border-radius: .3rem;
 }
 
+img {
+    max-width: 100%;
+    width: 100%;
+    margin-left: auto;
+    display: block;
+    margin-right: auto;
+}
+
 #intro .jumbotron {
     height: 70vh;
     margin-bottom: 0px;
@@ -87,10 +95,6 @@ p.lead {
     margin-bottom: 0px;
 }
 
-img {
-    max-width: 100%;
-}
-
 #latest .upper {
     position: relative;
 }
@@ -139,6 +143,7 @@ header nav {
 footer {
     border-top: solid 1px #c9c9c9;
     padding: 80px 0px;
+    margin-top: 99px;
 }
 
 footer img {
@@ -162,8 +167,4 @@ footer a {
     color: gray;
     background-color: #fff;
     border-color: #fff;
-}
-
-footer {
-    margin-top: 99px;
 }

@@ -12,13 +12,6 @@ function Mnavbar(NULL) {
                 <ul class="navbar-nav me-auto">\
                     <li class="nav-item dropdown citydropdown mb-6">租屋\
                     </li>\
-                    <li class="nav-item dropdown">\
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">其他連結</a>\
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">\
-                            <li><a class="dropdown-item" href="https://www.youtube.com/watch?v=Py21QCndbxc">一號</a></li>\
-                            <li><a class="dropdown-item" href="https://youtu.be/Zx4nMqR3jAk">二號</a></li>\
-                        </ul>\
-                    </li>\
                 </ul>\
                 <span class="d-flex">\
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">\
@@ -116,7 +109,7 @@ function citydropdown(NULL) {
 }
 
 function is_login() {
-    if (window.location.href.split('login=')[1].split('&')[0] == 'True') { //抓取是否登入
+    if (login_check()) { //抓取是否登入
         for (let loop of document.querySelectorAll('.ilogin')) {
             loop.classList.add('dropdown')
             loop.innerHTML = '\
@@ -126,6 +119,18 @@ function is_login() {
                 <li><a class="dropdown-item" href="message.html">訊息</a></li>\
             </ul>';
         }
+    }
+}
+
+function login_check() {
+    try {
+        if (window.location.href.split('login=')[1].split('&')[0] == 'True') {
+            return true;
+        } else {
+            return false;
+        }
+    } catch {
+        return false
     }
 }
 
