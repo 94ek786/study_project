@@ -17,7 +17,12 @@
 <body>
     <section class="container">
         <p></p>
-        <h1>使用者資訊</h1>
+        <?php
+        session_start();
+        $username=$_SESSION["username"];
+        echo "<h1>用戶".$username."</h1>";
+        echo "<a href='_logout.php'>登出</a>";
+        ?>
         <p></p>
         <hr>
     </section>

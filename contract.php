@@ -33,19 +33,19 @@
         <h2 class="col-md-12">房屋資料</h2>
         <div class="row">
             <h5 class="col-md-2">地址</h5>
-            <input data-index="1" onkeydown="next_input(event)" required class="col-md-10" name="address" placeholder="如屏東縣內埔鄉學府路1號">
+            <input data-index="1" id="houseaddress" onkeydown="next_input(event)" required class="col-md-10" name="address" placeholder="如屏東縣內埔鄉學府路1號">
         </div>
         <div class="row">
             <h5 class="col-md-2">坪數</h5>
-            <input data-index="2" onkeydown="next_input(event)" required class="col-md-10" name="h_size" placeholder="如30坪">
+            <input data-index="2" id="housename" onkeydown="next_input(event)" required class="col-md-10" name="h_size" placeholder="如30坪">
         </div>
         <div class="row">
             <h5 class="col-md-2">類型</h5>
-            <input data-index="3" onkeydown="next_input(event)" required class="col-md-10" name="type" placeholder="如公寓">
+            <input data-index="3" id="securitydeposit" onkeydown="next_input(event)" required class="col-md-10" name="type" placeholder="如公寓">
         </div>
         <div class="row">
             <h5 class="col-md-2">建物格局</h5>
-            <input data-index="4" onkeydown="next_input(event)" required class="col-md-10" name="pattern" placeholder="如三房一廳一廚房">
+            <input data-index="4" id="rentcost" onkeydown="next_input(event)" required class="col-md-10" name="pattern" placeholder="如三房一廳一廚房">
         </div>
     </section>
     <section class="container">
@@ -109,5 +109,9 @@
     <footer id="Mfooter">
     </footer>
 </body>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/web3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.6.0/web3.min.js%22%3E"></script>
+<script type="text/javascript" src="js/contract.js"></script>
+<script type="text/javascript" src="js/contract_abi.js"></script>
 </html>

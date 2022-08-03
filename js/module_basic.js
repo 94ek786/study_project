@@ -16,7 +16,7 @@ function Mnavbar(NULL) {
                 <span class="d-flex">\
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">\
                     <li class="nav-item ilogin">\
-                        <a class="nav-link" style="cursor: pointer" onclick="to_login()">登入</a>\
+                        <a class="nav-link" style="cursor: pointer" href="login.php?lpath=asdf">登入</a>\
                     </li>\
                     </ul>\
                 </span>\
@@ -25,7 +25,6 @@ function Mnavbar(NULL) {
     </nav>\
 </div>'
 }
-
 
 function Mfooter(NULL) {
     document.getElementById('Mfooter').innerHTML = '<a name="OTHERS"></a>\
@@ -131,14 +130,6 @@ function login_check() {
         }
     } catch {
         return false
-    }
-}
-
-function to_login() {
-    if (window.location.href.includes('login.html')) {
-        location.href = window.location.href
-    } else {
-        location.href = 'login.html?lpath=asdf';
     }
 }
 

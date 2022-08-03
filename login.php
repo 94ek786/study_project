@@ -1,3 +1,14 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location:member.php");
+    exit;  //記得要跳出來，不然會重複轉址過多次
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,15 +28,17 @@
 
 <body>
     <section>
-        <div class="container">
-            帳號
-            <input autofocus required name="account" data-index="1" onkeydown="next_input(event)">
-            <p></p>
-            密碼
-            <input required type="password" name="password" data-index="2" onkeydown="next_input(event)">
-            <p></p>
-            <button data-index="3" onclick="loginC()">登入</button>
-        </div>
+        <form method="post" action="_login.php">
+            <div class="container">
+                帳號
+                <input autofocus required name="username" data-index="1" onkeydown="next_input(event)">
+                <p></p>
+                密碼
+                <input required type="password" name="password" data-index="2" onkeydown="next_input(event)">
+                <p></p>
+                <input type="submit" data-index="3" name="submit" value="登入">
+            </div>
+        </form>
     </section>
 </body>
 
