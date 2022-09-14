@@ -29,22 +29,18 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 <body>
     <section>
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <h2>登入</h2>
-                    <form method="post" action="_login.php">
-                    帳號
-                    <input autofocus required name="username" data-index="1" onkeydown="next_input(event)">
-                    <p></p>
-                    密碼
-                    <input required type="password" name="password" data-index="2" onkeydown="next_input(event)">
-                    <p></p>
-                    <input type="submit" data-index="3" name="submit" value="登入">
-                    </form>
-                    <br>
-                    <a href="singup.php"><button>註冊</button></a>
-                </div>
-            </div>
+            <h2>註冊</h2>
+            <form method="post" action="_singup.php">
+                帳號
+                <input autofocus required name="username" data-index="1" onkeydown="next_input(event)">
+                <p></p>
+                密碼
+                <input required type="password" name="password" data-index="2" onkeydown="next_input(event)">
+                <p></p>
+                <input type="submit" data-index="3" name="submit" value="註冊">
+            </form>
+            <br>
+            <a href="login.php"><button>登入</button></a>
         </div>
     </section>
 </body>

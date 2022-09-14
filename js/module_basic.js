@@ -1,3 +1,6 @@
+//模塊化HTML
+
+//導覽列
 function Mnavbar(NULL) {
     document.getElementById('Mnavbar').innerHTML = '<div class="container">\
     <nav class="navbar fixed-top navbar-expand-md navbar-light">\
@@ -26,6 +29,7 @@ function Mnavbar(NULL) {
 </div>'
 }
 
+//至底資訊
 function Mfooter(NULL) {
     document.getElementById('Mfooter').innerHTML = '<a name="OTHERS"></a>\
     <div class="container">\
@@ -55,10 +59,13 @@ function Mfooter(NULL) {
     </div>'
 }
 
+//因導覽列所需的空白格 讓排版正常
 function empty(NULL) {
     document.getElementById('empty').innerHTML = '<div style="height:56px;background: gray">empty</div>'
 }
 
+//快速到收尋區
+//導覽列與Index有用到
 function citydropdown(NULL) {
     for (let loop of document.querySelectorAll('.citydropdown')) {
         i = loop.innerHTML
@@ -107,6 +114,7 @@ function citydropdown(NULL) {
     }
 }
 
+//已改用PHP not useing
 function is_login() {
     if (login_check()) { //抓取是否登入
         for (let loop of document.querySelectorAll('.ilogin')) {
@@ -120,7 +128,7 @@ function is_login() {
         }
     }
 }
-
+//已改用PHP not useing
 function login_check() {
     try {
         if (window.location.href.split('login=')[1].split('&')[0] == 'True') {
@@ -133,6 +141,31 @@ function login_check() {
     }
 }
 
+//模塊化的房屋簡介及連結
+function objectA(NULL) {
+    i = 0;
+    for (let loop of document.querySelectorAll('.objectA')) {
+        i++;
+        loop.innerHTML = '\
+                            <div class="outer">\
+                                <a href="house.html?id=' + String(i) + '">\
+                                    <div class="upper">\
+                                        <img src="img/testimg16-9.png">\
+                                        <div class="innertext">\
+                                            <span>價格</span>\
+                                        </div>\
+                                    </div>\
+                                    <div class="lower">\
+                                        <h3>標題</h3>\
+                                        <span>簡介</span>\
+                                    </div>\
+                                </a>\
+                            </div>';
+        loop.className = 'col-md';
+    }
+}
+
+//載入網站後執行此程式碼
 $(document).ready(function() {
     try {
         Mnavbar();
@@ -147,8 +180,12 @@ $(document).ready(function() {
     try {
         is_login();
     } catch {}
+    try {
+        objectA();
+    } catch {}
 });
 
+//在開頭加上導覽列與空白格
 document.write('\
     <header id="Mnavbar">\
     </header>\
