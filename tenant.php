@@ -1,3 +1,7 @@
+<?php
+$GLOBALS["n"] = 1;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,17 +15,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/module_basic.js"></script>
+    <?php include 'js/module_basic.php'; ?>
 </head>
 
 <body>
     <section class="container">
         <p></p>
         <?php
-        session_start();
-        $username=$_SESSION["username"];
+        $username = $GLOBALS["username"];
         echo "<h1>用戶".$username."</h1>";
-        echo "<a href='_logout.php'>登出</a>";
+        echo "<a href='_logout.php'>點此登出</a>";
         ?>
         <p></p>
         <hr>
@@ -31,13 +34,6 @@
         <h1>收藏</h1>
         <p></p>
         <div class="citydropdown dropdown">尋找租屋</div>
-        <hr>
-    </section>
-    <section class="container">
-        <p></p>
-        <h1>出租房屋</h1>
-        <p></p>
-        <button>出租房屋</button>
         <hr>
     </section>
     <section class="container">

@@ -1,11 +1,38 @@
-//模塊化HTML
+<?php
+session_start();
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    $GLOBALS['loggedin'] = $_SESSION['loggedin'];
+    $GLOBALS["type"] = $_SESSION["type"];
+    $GLOBALS["username"]=$_SESSION["username"];
+}else{
+    $GLOBALS['loggedin'] = 0;
+}
+
+if(isset($GLOBALS["n"]) != true){
+    $GLOBALS["n"] = 0;
+}
+
+if($GLOBALS['n'] == 3){
+    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+        if($_SESSION["type"] == "tenant"){
+            header("location:tenant.php");
+            exit;
+        }else{
+            header("location:landlord.php");
+            exit;
+        }
+    }
+}
+?>
+<script>
+//模塊化
 
 //導覽列
 function Mnavbar(NULL) {
     document.getElementById('Mnavbar').innerHTML = '<div class="container">\
     <nav class="navbar fixed-top navbar-expand-md navbar-light">\
         <div class="container-fluid">\
-            <a class="navbar-brand" href="index.html">\
+            <a class="navbar-brand" href="index.php">\
                 首頁\
             </a>\
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">\
@@ -77,67 +104,60 @@ function citydropdown(NULL) {
                             <div class="row">\
                                     <div class="col">\
                                         <li class="dropdown-header">北部</li>\
-                                        <li><a class="dropdown-item" href="search.html?city=台北市">台北市</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=新北市">新北市</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=桃園市">桃園市</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=新竹市">新竹市</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=新竹縣">新竹縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=宜蘭縣">宜蘭縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=基隆市">基隆市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=台北市">台北市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=新北市">新北市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=桃園市">桃園市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=新竹市">新竹市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=新竹縣">新竹縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=宜蘭縣">宜蘭縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=基隆市">基隆市</a></li>\
                                     </div>\
                                     <div class="col">\
                                         <li class="dropdown-header">中部</li>\
-                                        <li><a class="dropdown-item" href="search.html?city=台中市">台中市</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=彰化縣">彰化縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=雲林縣">雲林縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=苗栗縣">苗栗縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=南投縣">南投縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=台中市">台中市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=彰化縣">彰化縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=雲林縣">雲林縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=苗栗縣">苗栗縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=南投縣">南投縣</a></li>\
                                     </div>\
                                     <div class="col">\
                                         <li class="dropdown-header">南部</li>\
-                                        <li><a class="dropdown-item" href="search.html?city=高雄市">高雄市</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=台南市">台南市</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=嘉義市">嘉義市</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=嘉義縣">嘉義縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=屏東縣">屏東縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=高雄市">高雄市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=台南市">台南市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=嘉義市">嘉義市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=嘉義縣">嘉義縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=屏東縣">屏東縣</a></li>\
                                     </div>\
                                     <div class="col">\
                                         <li class="dropdown-header">東部及外島</li>\
-                                        <li><a class="dropdown-item" href="search.html?city=台東縣">台東縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=花蓮縣">花蓮縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=澎湖縣">澎湖縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=金門縣">金門縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.html?city=連江縣">連江縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=台東縣">台東縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=花蓮縣">花蓮縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=澎湖縣">澎湖縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=金門縣">金門縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?city=連江縣">連江縣</a></li>\
                                     </div>\
                             </div>\
                         </ul>';
     }
 }
 
-//已改用PHP not useing
+//更改已登入的navbar介面
 function is_login() {
-    if (login_check()) { //抓取是否登入
+    <?php
+    echo "var loggedin = ".$GLOBALS["loggedin"].";";
+    ?>
+        console.log(loggedin);
+    if (loggedin == true) {
         for (let loop of document.querySelectorAll('.ilogin')) {
             loop.classList.add('dropdown')
             loop.innerHTML = '\
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">會員頭像</a>\
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">會員</a>\
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">\
-                <li><a class="dropdown-item" href="member.html">會員資料</a></li>\
-                <li><a class="dropdown-item" href="message.html">訊息</a></li>\
+                <li><a class="dropdown-item" href="_member.php">會員中心</a></li>\
+                <li><a class="dropdown-item" href="message.php">訊息</a></li>\
+                <li><a class="dropdown-item" href="_logout.php">登出</a></li>\
             </ul>';
         }
-    }
-}
-//已改用PHP not useing
-function login_check() {
-    try {
-        if (window.location.href.split('login=')[1].split('&')[0] == 'True') {
-            return true;
-        } else {
-            return false;
-        }
-    } catch {
-        return false
     }
 }
 
@@ -148,7 +168,7 @@ function objectA(NULL) {
         i++;
         loop.innerHTML = '\
                             <div class="outer">\
-                                <a href="house.html?id=' + String(i) + '">\
+                                <a href="house.php?id=' + String(i) + '">\
                                     <div class="upper">\
                                         <img src="img/testimg16-9.png">\
                                         <div class="innertext">\
@@ -164,8 +184,8 @@ function objectA(NULL) {
         loop.className = 'col-md';
     }
 }
-
-//載入網站後執行此程式碼
+console.log
+    //載入網站後執行此程式碼
 $(document).ready(function() {
     try {
         Mnavbar();
@@ -190,3 +210,4 @@ document.write('\
     <header id="Mnavbar">\
     </header>\
     <div id="empty"></div>');
+</script>

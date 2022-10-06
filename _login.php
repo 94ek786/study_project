@@ -14,9 +14,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         session_start();
         // Store data in session variables
         $_SESSION["loggedin"] = true;
-        $_SESSION["id"] = $data["id"];
         $_SESSION["username"] = $data["username"];
-        header("location:member.php");
+        $_SESSION["type"] = $data["type"];
+        if($data["type"] == "tenant"){
+            header("location:tenant.php");
+        }else{
+            header("location:landlord.php");
+        }
     }else{
             function_alert("帳號或密碼錯誤"); 
         }

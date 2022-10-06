@@ -1,13 +1,5 @@
 <?php
-// Initialize the session
-session_start();
- 
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location:member.php");
-    exit;  //記得要跳出來，不然會重複轉址過多次
-}
-
+$GLOBALS["n"] = 3;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,25 +14,38 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/module_basic.js"></script>
+    <?php include 'js/module_basic.php'; ?>
     <script type="text/javascript" src="js/login.js"></script>
 </head>
 
 <body>
     <section>
         <div class="container">
-            <h2>註冊</h2>
-            <form method="post" action="_singup.php">
-                帳號
-                <input autofocus required name="username" data-index="1" onkeydown="next_input(event)">
-                <p></p>
-                密碼
-                <input required type="password" name="password" data-index="2" onkeydown="next_input(event)">
-                <p></p>
-                <input type="submit" data-index="3" name="submit" value="註冊">
-            </form>
-            <br>
-            <a href="login.php"><button>登入</button></a>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <h2>註冊</h2>
+                    <form method="post" action="_singup.php">
+                        <select required name="type">
+                            <option label value="">請先選擇註冊為房東或房客</option>
+                            <option value="tenant">房客</option>
+                            <option value="landlord">房東</option>
+                        </select>
+                        <p></p>
+                        帳號
+                        <input autofocus required name="username" data-index="1" onkeydown="next_input(event)">
+                        <p></p>
+                        密碼
+                        <input required name="password" data-index="2" onkeydown="next_input(event)">
+                        <p></p>
+                        信箱
+                        <input required name="email" data-index="3" onkeydown="next_input(event)">
+                        <p></p>
+                        <input type="submit" data-index="4" name="submit" value="註冊">
+                    </form>
+                    <br>
+                    <a href="login.php">我已有帳號點此登入</a>
+                </div>
+            </div>
         </div>
     </section>
 </body>

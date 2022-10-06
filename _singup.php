@@ -4,12 +4,14 @@ $conn=require_once "config.php";
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $username=$_POST["username"];
     $password=$_POST["password"];
+    $email=$_POST["email"];
+    $type=$_POST["type"];
     //檢查帳號是否重複
     $check="SELECT * FROM users WHERE username='".$username."'";
     $result = mysqli_query($conn,$check);
     if(mysqli_num_rows($result)==0){
-        $sql="INSERT INTO users (id,username, password)
-            VALUES(NULL,'".$username."','".$password."')";
+        $sql="INSERT INTO users (username, password, email, type)
+            VALUES('".$username."','".$password."','".$email."','".$type."')";
         
         if(mysqli_query($conn, $sql)){
             echo "註冊成功!3秒後將自動跳轉頁面<br>";
