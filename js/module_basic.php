@@ -1,24 +1,30 @@
 <?php
 session_start();
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
     $GLOBALS['loggedin'] = $_SESSION['loggedin'];
-    $GLOBALS["type"] = $_SESSION["type"];
-    $GLOBALS["username"]=$_SESSION["username"];
+    $GLOBALS['type'] = $_SESSION['type'];
+    $GLOBALS['username']=$_SESSION['username'];
 }else{
     $GLOBALS['loggedin'] = 0;
 }
 
-if(isset($GLOBALS["n"]) != true){
-    $GLOBALS["n"] = 0;
+if(isset($GLOBALS['n']) != true){
+    $GLOBALS['n'] = 0;
+}
+
+if($GLOBALS['n'] == 1){
+    if(isset($_SESSION['loggedin']) != true){
+        header('location:login.php');
+    }
 }
 
 if($GLOBALS['n'] == 3){
-    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        if($_SESSION["type"] == "tenant"){
-            header("location:tenant.php");
+    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
+        if($_SESSION['type'] == 'tenant'){
+            header('location:tenant.php');
             exit;
         }else{
-            header("location:landlord.php");
+            header('location:landlord.php');
             exit;
         }
     }
@@ -151,7 +157,7 @@ function is_login() {
         for (let loop of document.querySelectorAll('.ilogin')) {
             loop.classList.add('dropdown')
             loop.innerHTML = '\
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">會員</a>\
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $GLOBALS['username']?></a>\
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">\
                 <li><a class="dropdown-item" href="_member.php">會員中心</a></li>\
                 <li><a class="dropdown-item" href="message.php">訊息</a></li>\
@@ -184,6 +190,15 @@ function objectA(NULL) {
         loop.className = 'col-md';
     }
 }
+
+function next_input(event) {
+    if (event.key === "Enter") {
+        var $this = $(event.target);
+        var index = parseFloat($this.attr('data-index'));
+        $('[data-index="' + (index + 1).toString() + '"]').focus();
+    };
+};
+
 console.log
     //載入網站後執行此程式碼
 $(document).ready(function() {

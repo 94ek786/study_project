@@ -21,21 +21,51 @@ $GLOBALS["n"] = 1;
     <section class="container">
         <h2 class="col-md-12">房屋資料</h2>
         <form method="post" action="_login.php">
+        <div class="row">   
+            <h5 class="col-md-2">縣市</h5>
+            <select class="col-md-2" required name="county">
+                <option label value="">請先選擇縣市</option>
+                <option value="台北市">台北市</option>
+                <option value="新北市">新北市</option>
+                <option value="桃園市">桃園市</option>
+                <option value="新竹市">新竹市</option>
+                <option value="新竹縣">新竹縣</option>
+                <option value="宜蘭縣">宜蘭縣</option>
+                <option value="基隆市">基隆市</option>
+                <option value="台中市">台中市</option>
+                <option value="彰化縣">彰化縣</option>
+                <option value="雲林縣">雲林縣</option>
+                <option value="苗栗縣">苗栗縣</option>
+                <option value="南投縣">南投縣</option>
+                <option value="高雄市">高雄市</option>
+                <option value="台南市">台南市</option>
+                <option value="嘉義市">嘉義市</option>
+                <option value="嘉義縣">嘉義縣</option>
+                <option value="屏東縣">屏東縣</option>
+                <option value="台東縣">台東縣</option>
+                <option value="花蓮縣">花蓮縣</option>
+                <option value="澎湖縣">澎湖縣</option>
+                <option value="金門縣">金門縣</option>
+                <option value="連江縣">連江縣</option>
+            </select>
+            <h5 class="col-md-2">行政區</h5>
+            <input data-index="2" onkeydown="next_input(event)" required class="col-md-2" name="township" placeholder="鄉鎮市區，如內埔鄉">
+        </div>
         <div class="row">
             <h5 class="col-md-2">地址</h5>
-            <input data-index="1" id="houseaddress" onkeydown="next_input(event)" required class="col-md-10" name="address" placeholder="如屏東縣內埔鄉學府路1號">
+            <input data-index="3" onkeydown="next_input(event)" required class="col-md-10" name="address" placeholder="如屏東縣內埔鄉學府路1號">
         </div>
         <div class="row">
             <h5 class="col-md-2">坪數</h5>
-            <input data-index="2" id="housename" onkeydown="next_input(event)" required class="col-md-10" name="h_size" placeholder="如30坪">
+            <input data-index="4" onkeydown="next_input(event)" required class="col-md-10" name="h_size" placeholder="如30坪" type="number">
         </div>
         <div class="row">
             <h5 class="col-md-2">類型</h5>
-            <input data-index="3" id="securitydeposit" onkeydown="next_input(event)" required class="col-md-10" name="type" placeholder="如公寓">
+            <input data-index="5" onkeydown="next_input(event)" required class="col-md-10" name="type" placeholder="如公寓">
         </div>
         <div class="row">
             <h5 class="col-md-2">建物格局</h5>
-            <input data-index="4" id="rentcost" onkeydown="next_input(event)" required class="col-md-10" name="pattern" placeholder="如三房一廳一廚房">
+            <input data-index="6" onkeydown="next_input(event)" required class="col-md-10" name="pattern" placeholder="如三房一廳一廚房">
         </div>
     </section>
     <section class="container">
@@ -46,53 +76,36 @@ $GLOBALS["n"] = 1;
         </div>
         <div class="row">
             <h5 class="col-md-2">每月租金</h5>
-            <input data-index="8" onkeydown="next_input(event)" required class="col-md-10" name="rent" placeholder="含管理費，公共水電費等每月固定費用">
+            <input data-index="8" onkeydown="next_input(event)" required class="col-md-10" name="rent" placeholder="含管理費，公共水電費等每月固定費用" type="number">
         </div>
         <div class="row">
             <h5 class="col-md-2">水電費</h5>
             <input data-index="9" onkeydown="next_input(event)" required class="col-md-10" name="utility_bill" placeholder="水電費之計價">
         </div>
-        <div class="row">
-            <h5 class="col-md-2">出租人</h5>
-            <input data-index="10" onkeydown="next_input(event)" required class="col-md-10" name="landlord" placeholder="如馬一九">
-        </div>
-        <div class="row">
-            <h5 class="col-md-2">承租人</h5>
-            <input data-index="11" onkeydown="next_input(event)" required class="col-md-10" name="tenant" placeholder="如菜一五">
-        </div>
     </section>
     <section class="container">
         <h2 class="col-md-12">詳情</h2>
         <div class="row">
-            <h5 class="col-md-2">租賃範圍</h5>
-            <input data-index="12" onkeydown="next_input(event)" required class="col-md-10" name="area" placeholder="全部/第＿層，＿號房">
-        </div>
-        <div class="row">
             <h5 class="col-md-2">車位</h5>
-            <input data-index="13" onkeydown="next_input(event)" required class="col-md-10" name="parking" placeholder="無/第＿層，第＿號">
+            <input data-index="10" onkeydown="next_input(event)" required class="col-md-10" name="parking" placeholder="有/無">
         </div>
         <div class="row">
             <h5 class="col-md-2">家具設備</h5>
-            <input data-index="14" onkeydown="next_input(event)" required class="col-md-10" name="furniture" placeholder="如一張雙人床一張單人床兩個衣櫃一張桌子一張椅子">
+            <input data-index="11" onkeydown="next_input(event)" required class="col-md-10" name="furniture" placeholder="如一張雙人床一張單人床兩個衣櫃一張桌子一張椅子">
         </div>
         <div class="row">
             <h5 class="col-md-2">公共設施</h5>
-            <input data-index="15" onkeydown="next_input(event)" required class="col-md-10" name="public" placeholder="如電梯，飲水機">
+            <input data-index="12" onkeydown="next_input(event)" required class="col-md-10" name="public" placeholder="如電梯，飲水機">
         </div>
     </section>
     <section class="container">
             <h2 class="col-md-12">其他</h2>
-            <input data-index="16" onkeydown="next_input(event)" required class="col-md-12" name="others" placeholder="如公共設施使用規則或禁止養寵物等">
+            <input data-index="13" onkeydown="next_input(event)" required class="col-md-12" name="others" placeholder="如禁止養寵物或其他規則">
             <p></p>
             <h2 class="col-md-12">屋主說明</h2>
-            <input data-index="17" onkeydown="next_input(event)" required class="col-md-12" name="description" placeholder="有的沒有的">
+            <input data-index="14" onkeydown="next_input(event)" required class="col-md-12" name="description" placeholder="有的沒有的">
             <p></p>
-            <div class="row">
-                <div class="col-md">
-                    
-                </div>
-            </div>
-        <input type="submit" data-index="18" name="submit" value="確認">
+        <input type="submit" data-index="15" name="submit" value="確認">
         </form>
     </section>
     <footer id="Mfooter">
