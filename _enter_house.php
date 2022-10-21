@@ -3,7 +3,8 @@ $conn=require_once "config.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     session_start();
-    $username = $_SESSION{'username'};
+    $username = $_SESSION['username'];
+    $title = $_POST['title'];
     $county = $_POST['county'];
     $township = $_POST['township'];
     $address = $_POST['address'];
@@ -13,23 +14,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $deposit = $_POST['deposit'];
     $rent = $_POST['rent'];
     $utility_bill = $_POST['utility_bill'];
-    $area = $_POST['area'];
     $parking = $_POST['parking'];
     $furniture = $_POST['furniture'];
     $public = $_POST['public'];
     $others = $_POST['others'];
     $description = $_POST['description'];
 
-    $sql="INSERT INTO house (owner, county, township, address, h_size, type, pattern, deposit, rent, utility_bill, area, parking, furniture, public, others, description)
+    $sql="INSERT INTO house (owner, county, township, address, h_size, type, pattern, deposit, rent, utility_bill, parking, furniture, public, others, description, title)
     VALUES('".$username."','".$county."','".$township."','".$address."','".$h_size."','".$type."','".$pattern."','".$deposit."','".$rent."','".$utility_bill."',
-    '".$area."','".$parking."','".$furniture."','".$public."','".$others."','".$description."')";
+    '".$parking."','".$furniture."','".$public."','".$others."','".$description."','".$title."')";
     if(mysqli_query($conn, $sql)){
-        echo "登入成功!3秒後將自動跳轉頁面<br>";
+        echo "房屋基本資料填寫成功!3秒後將自動跳轉頁面<br>";
         echo "<a href='login.php'>未成功跳轉頁面請點擊此</a>";
         echo "<meta http-equiv='refresh' content='3;url=login.php'>";
         exit;
     }else{
-        echo "Error creating table: " . mysqli_error($conn);
+        echo "伺服器似乎出問題了 :" . mysqli_error($conn);
     }
 
 }

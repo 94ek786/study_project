@@ -25,12 +25,12 @@ $GLOBALS["n"] = 3;
                     <h2>登入</h2>
                     <form method="post" action="_login.php">
                     帳號
-                    <input autofocus required name="username" data-index="1" onkeydown="next_input(event)">
+                    <input autofocus required name="username">
                     <p></p>
                     密碼
-                    <input required type="password" name="password" data-index="2" onkeydown="next_input(event)">
+                    <input required type="password" name="password">
                     <p></p>
-                    <input type="submit" data-index="3" name="submit" value="登入">
+                    <input type="submit" name="submit" value="登入">
                     </form>
                     <br>
                     <a href="singup.php">我沒有帳號點此註冊</a>

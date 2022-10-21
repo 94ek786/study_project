@@ -15,6 +15,11 @@ $GLOBALS["n"] = 1;
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <?php include 'js/module_basic.php'; ?>
+    <script>
+        function to_H(i){
+            location.href='house.php?id=' + i;
+        };
+    </script>
 </head>
 
 <body>
@@ -31,6 +36,42 @@ $GLOBALS["n"] = 1;
         <p></p>
         <h1>出租中</h1>
         <p></p>
+        <?php
+        $conn=require_once "config.php";
+        $sql = "SELECT * FROM house WHERE owner ='".$username."'";
+        $result = mysqli_query($conn,$sql);
+        while ($row = $result->fetch_assoc()) {
+            if(file_exists('img/Himg_'.$row['ID'].'_1.png')){
+                $imgUrl = 'img/Himg_'.$row['ID'].'_1.png';
+            }else if(file_exists('img/Himg_'.$row['ID'].'_1.jpg')){
+                $imgUrl = 'img/Himg_'.$row['ID'].'_1.jpg';
+            }else{
+                $imgUrl = 'img/testimg16-9.png';
+            }
+            echo '
+            <div class="row" style="border-style:solid;border-width:1px;border-color:lightgray;cursor: pointer;" onclick="to_H('.$row['ID'].')">
+                <div class="col-md-2">
+                    <img src="'.$imgUrl.'">
+                </div>
+                <div class="col-md-4">
+                    <h4>'.$row['title'].'</h4>
+                    <h7 style="color:gray;">'.$row['description'].'</h7>
+                </div>
+                <div class="col-md-1">
+                    <form method="post" action="upload_img.php">
+                        <input type="hidden" name="ID" value="'.$row['ID'].'">
+                        <input type="submit" name="submit" value="上傳圖片">
+                    </form>
+                </div>
+                <div class="col-md-1">
+                    <form method="post" action="update_house.php">
+                        <input type="hidden" name="ID" value="'.$row['ID'].'">
+                        <input type="submit" name="submit" value="修改內容">
+                    </form>
+                </div>
+            </div><br>';
+        }
+        ?>
         <a href="enter_house.php">出租房屋</a>
         <hr>
     </section>

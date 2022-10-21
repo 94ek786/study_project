@@ -1,5 +1,8 @@
 <?php
+//模塊化
+//網頁載入前判斷
 session_start();
+//如果已登入抓取登入資料
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
     $GLOBALS['loggedin'] = $_SESSION['loggedin'];
     $GLOBALS['type'] = $_SESSION['type'];
@@ -7,17 +10,17 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
 }else{
     $GLOBALS['loggedin'] = 0;
 }
-
+//
 if(isset($GLOBALS['n']) != true){
     $GLOBALS['n'] = 0;
 }
-
+//將未登入而進入須登入網頁時跳轉至登入頁面
 if($GLOBALS['n'] == 1){
     if(isset($_SESSION['loggedin']) != true){
         header('location:login.php');
     }
 }
-
+//若已登入進入登入與註冊頁面時跳轉至會員中心
 if($GLOBALS['n'] == 3){
     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
         if($_SESSION['type'] == 'tenant'){
@@ -31,7 +34,7 @@ if($GLOBALS['n'] == 3){
 }
 ?>
 <script>
-//模塊化
+
 
 //導覽列
 function Mnavbar(NULL) {
@@ -190,14 +193,6 @@ function objectA(NULL) {
         loop.className = 'col-md';
     }
 }
-
-function next_input(event) {
-    if (event.key === "Enter") {
-        var $this = $(event.target);
-        var index = parseFloat($this.attr('data-index'));
-        $('[data-index="' + (index + 1).toString() + '"]').focus();
-    };
-};
 
 console.log
     //載入網站後執行此程式碼

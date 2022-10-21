@@ -31,15 +31,15 @@ $GLOBALS["n"] = 3;
                         </select>
                         <p></p>
                         帳號
-                        <input autofocus required name="username" data-index="1" onkeydown="next_input(event)">
+                        <input autofocus required name="username">
                         <p></p>
                         密碼
-                        <input required name="password" data-index="2" onkeydown="next_input(event)">
+                        <input required name="password">
                         <p></p>
                         信箱
-                        <input required name="email" data-index="3" onkeydown="next_input(event)">
+                        <input required name="email">
                         <p></p>
-                        <input type="submit" data-index="4" name="submit" value="註冊">
+                        <input type="submit" name="submit" value="註冊">
                     </form>
                     <br>
                     <a href="login.php">我已有帳號點此登入</a>
