@@ -8,7 +8,8 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
     $GLOBALS['type'] = $_SESSION['type'];
     $GLOBALS['username']=$_SESSION['username'];
 }else{
-    $GLOBALS['loggedin'] = 0;
+    $GLOBALS['loggedin'] = false;
+    $GLOBALS['username'] = 'none';
 }
 //
 if(isset($GLOBALS['n']) != true){
@@ -153,14 +154,16 @@ function citydropdown(NULL) {
 //更改已登入的navbar介面
 function is_login() {
     <?php
-    echo "var loggedin = ".$GLOBALS["loggedin"].";";
+    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
+        echo 'var loggedin = true;';
+    }else{
+        echo 'var loggedin = false;';
+    }
     ?>
-        console.log(loggedin);
-    if (loggedin == true) {
+    if (loggedin) {
         for (let loop of document.querySelectorAll('.ilogin')) {
-            loop.classList.add('dropdown')
-            loop.innerHTML = '\
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $GLOBALS['username']?></a>\
+            loop.classList.add('dropdown');
+            loop.innerHTML = '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $GLOBALS['username']?></a>\
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">\
                 <li><a class="dropdown-item" href="_member.php">會員中心</a></li>\
                 <li><a class="dropdown-item" href="message.php">訊息</a></li>\
