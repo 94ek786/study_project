@@ -3,10 +3,7 @@ $conn=require_once "config.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     session_start();
-    $username = $_SESSION['username'];
     $title = $_POST['title'];
-    $county = $_POST['county'];
-    $township = $_POST['township'];
     $address = $_POST['address'];
     $h_size = $_POST['h_size'];
     $type = $_POST['type'];
@@ -20,11 +17,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $others = $_POST['others'];
     $description = $_POST['description'];
 
-    $sql="INSERT INTO house (owner, county, township, address, h_size, type, pattern, deposit, rent, utility_bill, parking, furniture, public, others, description, title, remain)
-    VALUES('".$username."','".$county."','".$township."','".$address."','".$h_size."','".$type."','".$pattern."','".$deposit."','".$rent."','".$utility_bill."',
-    '".$parking."','".$furniture."','".$public."','".$others."','".$description."','".$title."','0')";
+    $sql="UPDATE house 
+    SET title='".$title."', address='".$address."', h_size='".$h_size."', type='".$type."', pattern='".$pattern."', deposit='".$deposit."', rent='".$rent."', 
+    utility_bill='".$utility_bill."', parking='".$parking."', furniture='".$furniture."', public='".$public."', others='".$others."', description='".$description."' 
+    WHERE ID='".$_POST['ID']."';";
     if(mysqli_query($conn, $sql)){
-        echo "房屋基本資料填寫成功!3秒後將自動跳轉頁面<br>";
+        echo "房屋基本資料修改成功!3秒後將自動跳轉頁面<br>";
         echo "<a href='login.php'>未成功跳轉頁面請點擊此</a>";
         echo "<meta http-equiv='refresh' content='3;url=login.php'>";
         exit;

@@ -18,13 +18,48 @@
 <body>
     <section>
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="citydropdown"></div>
+            <form action="search.php" method="get">
+                <div class="row align-items-center" style="height:80px;border-width:1px; border-style:solid;border-color: lightgray;">
+                    <div class="col-md-2">
+                        <select required name="county">
+                            <option label value="">請先選擇縣市</option>
+                            <option value="台北市">台北市</option>
+                            <option value="新北市">新北市</option>
+                            <option value="桃園市">桃園市</option>
+                            <option value="新竹市">新竹市</option>
+                            <option value="新竹縣">新竹縣</option>
+                            <option value="宜蘭縣">宜蘭縣</option>
+                            <option value="基隆市">基隆市</option>
+                            <option value="台中市">台中市</option>
+                            <option value="彰化縣">彰化縣</option>
+                            <option value="雲林縣">雲林縣</option>
+                            <option value="苗栗縣">苗栗縣</option>
+                            <option value="南投縣">南投縣</option>
+                            <option value="高雄市">高雄市</option>
+                            <option value="台南市">台南市</option>
+                            <option value="嘉義市">嘉義市</option>
+                            <option value="嘉義縣">嘉義縣</option>
+                            <option value="屏東縣">屏東縣</option>
+                            <option value="台東縣">台東縣</option>
+                            <option value="花蓮縣">花蓮縣</option>
+                            <option value="澎湖縣">澎湖縣</option>
+                            <option value="金門縣">金門縣</option>
+                            <option value="連江縣">連江縣</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input name="township" placeholder="輸入鄉鎮市區" value="<?php if(isset($_GET['township'])){echo $_GET['township'];} ?>">
+                    </div>
+                    <div class="col-md-6">
+                        輸入價格區間：
+                        <input name="rentL" placeholder="大於此價格"  value="<?php if(isset($_GET['rentL'])){echo $_GET['rentL'];} ?>">~
+                        <input name="rentH" placeholder="小於此價格"  value="<?php if(isset($_GET['rentH'])){echo $_GET['rentH'];} ?>">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" name="submit" value="搜尋">
+                    </div>
                 </div>
-            </div>
-            搜索條件：
-            <div id="search_condition"></div>
+            </form>
             <div class="row">
                 <div class="col-md-3 d-flex flex-column">
                     <button style="background-color: lightgray;border-color:gray" class="btn btn-primary filter_button d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#filter" aria-expanded="false" aria-controls="filter">

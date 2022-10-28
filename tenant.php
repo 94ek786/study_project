@@ -36,9 +36,6 @@ $GLOBALS["n"] = 1;
         <div class="citydropdown dropdown">尋找租屋</div>
         <hr>
     </section>
-    <section class="container">
-        <a href="message.html"><button>查看私訊</button></a>
-    </section>
 </body>
 
 </html>

@@ -166,7 +166,6 @@ function is_login() {
             loop.innerHTML = '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $GLOBALS['username']?></a>\
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">\
                 <li><a class="dropdown-item" href="_member.php">會員中心</a></li>\
-                <li><a class="dropdown-item" href="message.php">訊息</a></li>\
                 <li><a class="dropdown-item" href="_logout.php">登出</a></li>\
             </ul>';
         }

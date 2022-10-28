@@ -48,14 +48,32 @@ $GLOBALS["n"] = 1;
             }else{
                 $imgUrl = 'img/testimg16-9.png';
             }
+            if($row['remain'] == 1){
+                $color = 'green';
+                $remain_D = '目前尚有空房點';
+                $remain_B = '切換為無空房';
+            }else{
+                $color = 'red';
+                $remain_D = '目前尚無空房點';
+                $remain_B = '切換為有空房';
+            }
             echo '
-            <div class="row" style="border-style:solid;border-width:1px;border-color:lightgray;cursor: pointer;" onclick="to_H('.$row['ID'].')">
+            <div class="row align-items-center" style="border-style:solid;border-width:1px;border-color:lightgray;cursor: pointer;" onclick="to_H('.$row['ID'].')">
                 <div class="col-md-2">
                     <img src="'.$imgUrl.'">
                 </div>
                 <div class="col-md-4">
                     <h4>'.$row['title'].'</h4>
                     <h7 style="color:gray;">'.$row['description'].'</h7>
+                </div>
+                <div class="col-md-2">
+                    <div style="border:10px solid;width:20px;height:20px;border-radius:50%;color:'.$color.';"></div>
+                    <form method="post" action="_remain_C.php">
+                        <input type="hidden" name="ID" value="'.$row['ID'].'">
+                        <input type="hidden" name="remain" value="'.$row['remain'].'">
+                        '.$remain_D.'
+                        <input type="submit" name="submit" value="'.$remain_B.'">
+                    </form>
                 </div>
                 <div class="col-md-1">
                     <form method="post" action="upload_img.php">
@@ -69,14 +87,17 @@ $GLOBALS["n"] = 1;
                         <input type="submit" name="submit" value="修改內容">
                     </form>
                 </div>
+                <div class="col-md-1">
+                    <form method="post" action="create_contract.php">
+                        <input type="hidden" name="ID" value="'.$row['ID'].'">
+                        <input type="submit" name="submit" value="開啟合約">
+                    </form>
+                </div>
             </div><br>';
         }
         ?>
         <a href="enter_house.php">出租房屋</a>
         <hr>
-    </section>
-    <section class="container">
-        <a href="message.html"><button>查看私訊</button></a>
     </section>
 </body>
 
