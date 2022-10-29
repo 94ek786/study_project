@@ -82,7 +82,7 @@ $GLOBALS["n"] = 1;
             <h2 class="col-md-12">租賃資料</h2>
             <div class="row">
                 <h5 class="col-md-2">押金</h5>
-                <input required class="col-md-10" name="deposit" placeholder="如50新台幣">
+                <input required class="col-md-10" name="deposit" placeholder="如50">
             </div>
             <br>
             <div class="row">
