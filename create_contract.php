@@ -28,6 +28,9 @@ if($_SERVER["REQUEST_METHOD"] != "POST"){
     $sql = "SELECT * FROM house WHERE ID ='".$_POST['ID']."'";
     $result = mysqli_query($conn,$sql);
     $data = $result->fetch_assoc();
+    $sql = "SELECT * FROM users WHERE username ='".$GLOBALS['username']."'";
+    $result = mysqli_query($conn,$sql);
+    $userdata = $result->fetch_assoc();
     ?>
     <section class="container">
     <form method="post" action="_create_contract.php">
@@ -76,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] != "POST"){
         </div><br>
         <div class="row">
             <h5 class="col-md-2">出租人</h5>
-            <input required class="col-md-10" name="landlord" placeholder="如馬一九">
+            <input required class="col-md-10" name="landlord" placeholder="如馬一九" value="<?php echo $userdata['name']; ?>">
         </div><br>
     </section>
     <section class="container">
@@ -87,7 +90,7 @@ if($_SERVER["REQUEST_METHOD"] != "POST"){
         </div><br>
         <div class="row">
             <h5 class="col-md-2">車位</h5>
-            <input required class="col-md-10" name="parking" placeholder="無/第＿層，第＿號">
+            <input required class="col-md-10" name="parking" placeholder="無/第＿層，第＿號" value="<?php if($data['parking'] != '有'){echo '無';} ?>">
         </div><br>
         <div class="row">
             <h5 class="col-md-2">家具設備</h5>

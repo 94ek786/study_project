@@ -1,4 +1,7 @@
 <?php
+if($_SERVER["REQUEST_METHOD"] != "POST"){
+    header('location:login.php');
+}
 // Include config file
 $conn=require_once "config.php";
  

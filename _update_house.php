@@ -1,4 +1,7 @@
 <?php
+if($_SERVER["REQUEST_METHOD"] != "POST"){
+    header('location:login.php');
+}
 $conn=require_once "config.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){

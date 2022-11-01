@@ -37,7 +37,10 @@ $GLOBALS["n"] = 3;
                         <input required name="password">
                         <p></p>
                         信箱
-                        <input required name="email">
+                        <input required name="email" type="email">
+                        <p></p>
+                        姓名
+                        <input required name="name" placeholder="請輸入真實姓名">
                         <p></p>
                         <input type="submit" name="submit" value="註冊">
                     </form>
