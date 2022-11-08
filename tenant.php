@@ -1,5 +1,5 @@
 <?php
-$GLOBALS["n"] = 1;
+$GLOBALS["n"] = 2;
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +16,12 @@ $GLOBALS["n"] = 1;
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <?php include 'js/module_basic.php'; ?>
+    <script>
+        function to_contract(){
+            var i = document.getElementById('rng').value
+            window.location = 'contract.php?rng=' + i;
+        }
+    </script>
 </head>
 
 <body>
@@ -34,8 +40,22 @@ $GLOBALS["n"] = 1;
         <h1>收藏</h1>
         <p></p>
         <div class="citydropdown dropdown">尋找租屋</div>
+        <p></p>
+        <div class="row">
+            <div class="col-md-8">輸入代碼進入簽約<input id="rng" type="text"></div>
+            <div class="col-md-4"><button onclick="to_contract()">確認</button></div>
+        </div>
         <hr>
     </section>
+    <script>
+        //偵測按下enter
+        var element = document.getElementById("rng");
+        element.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                to_contract();
+            }
+        });
+    </script>
 </body>
 
 </html>

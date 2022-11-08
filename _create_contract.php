@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $furniture = $_POST['furniture'];
     $public = $_POST['public'];
     $others = $_POST['others'];
-    $rng = 'xtIq48Ex401VHCsXfCkePOCey24ZTy0J';
+    $rng = random_string(64);
 
     $loop = 0;
     while($loop == 0){
@@ -55,16 +55,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             VALUES('".$username."','".$houseaddress."','".$h_size."','".$type."','".$pattern."','".$deposit."','".$rent."','".$utility_bill."','".$parking."','".$furniture."',
             '".$public."','".$others."','".$rent_Time_Start."','".$rent_Time_End."','".$area."','".$landlord."','".$rng."')";
             if(mysqli_query($conn, $sql)){
-                echo '<div align="center">合約創建成功<br>';
-                echo '<input id="id" readonly="readonly" style="cursor: pointer;" onclick="copyEvent()"></input>'
+                echo '<div align="center">合約創建成功<br>點擊複製合約隨機碼：';
+                echo '<input id="id" readonly="readonly" style="cursor: pointer;" onclick="copyEvent()" value="'.$rng'">';
                 echo "<p></p><p></p><a href='login.php'>回到會員頁面請擊此</a></div>";
                 exit;
             }else{
                 echo "伺服器似乎出問題了 :" . mysqli_error($conn);
             }
             $loop = 1;
+        }else{
+            $rng = random_string(65);
         }
-        $rng = random_string();
     }
 }
 ?>

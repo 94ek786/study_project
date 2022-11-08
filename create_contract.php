@@ -79,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] != "POST"){
         </div><br>
         <div class="row">
             <h5 class="col-md-2">出租人</h5>
-            <input required class="col-md-10" name="landlord" placeholder="如馬一九" value="<?php echo $userdata['name']; ?>">
+            <input readonly="readonly" required class="col-md-10" name="landlord" placeholder="如馬一九" value="<?php echo $userdata['name']; ?>">
         </div><br>
     </section>
     <section class="container">

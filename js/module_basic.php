@@ -21,6 +21,15 @@ if($GLOBALS['n'] == 1){
         header('location:login.php');
     }
 }
+//只有房客可進入的葉面
+if($GLOBALS['n'] == 2){
+    if(isset($_SESSION['loggedin']) != true){
+        header('location:login.php');
+    }
+    if($_SESSION['type'] != 'tenant'){
+        header('location:login.php');
+    }
+}
 //若已登入進入登入與註冊頁面時跳轉至會員中心
 if($GLOBALS['n'] == 3){
     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
@@ -31,6 +40,15 @@ if($GLOBALS['n'] == 3){
             header('location:landlord.php');
             exit;
         }
+    }
+}
+//只有房東可進入的葉面
+if($GLOBALS['n'] == 4){
+    if(isset($_SESSION['loggedin']) != true){
+        header('location:login.php');
+    }
+    if($_SESSION['type'] != 'landlord'){
+        header('location:login.php');
     }
 }
 ?>

@@ -1,5 +1,5 @@
 <?php
-$GLOBALS["n"] = 1;
+$GLOBALS["n"] = 4;
 ?>
 <!DOCTYPE html>
 <html lang="en">
