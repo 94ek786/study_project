@@ -19,7 +19,7 @@
     <section>
         <div class="container">
             <form action="search.php" method="get">
-                <div class="row align-items-center" style="height:80px;border-width:1px; border-style:solid;border-color: lightgray;">
+                <div class="row align-items-center" style="padding-top: 40px;padding-bottom: 40px;border-width:1px; border-style:solid;border-color: lightgray;">
                     <div class="col-md-2">
                         <select required name="county">
                             <option label value="">請先選擇縣市</option>
@@ -47,19 +47,19 @@
                             <option value="連江縣">連江縣</option>
                         </select>
                     </div>
-                    <div class="col-md-2">
-                        <input name="township" placeholder="輸入鄉鎮市區" value="<?php if(isset($_GET['township'])){echo $_GET['township'];} ?>">
+                        <input class="col-md-2" name="township" placeholder="輸入鄉鎮市區" value="<?php if(isset($_GET['township'])){echo $_GET['township'];} ?>">
+                        價格區間：
+                        <input class="col-md-2" name="rentL" placeholder="大於此價格"  value="<?php if(isset($_GET['rentL'])){echo $_GET['rentL'];} ?>">
+                    <div class="col-md-1 text-center">
+                        ~
                     </div>
-                    <div class="col-md-6">
-                        輸入價格區間：
-                        <input name="rentL" placeholder="大於此價格"  value="<?php if(isset($_GET['rentL'])){echo $_GET['rentL'];} ?>">~
-                        <input name="rentH" placeholder="小於此價格"  value="<?php if(isset($_GET['rentH'])){echo $_GET['rentH'];} ?>">
-                    </div>
+                        <input class="col-md-2" name="rentH" placeholder="小於此價格"  value="<?php if(isset($_GET['rentH'])){echo $_GET['rentH'];} ?>">
                     <div class="col-md-2">
                         <input type="submit" name="submit" value="搜尋">
                     </div>
                 </div>
             </form>
+            <p></p>
             <div class="row">
                 <div class="col-md-3 d-flex flex-column">
                     <button style="background-color: lightgray;border-color:gray" class="btn btn-primary filter_button d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#filter" aria-expanded="false" aria-controls="filter">
@@ -68,22 +68,65 @@
                     <div class="collapse d-md-block" id="filter">
                         <div class="card card-body" style="background-color: lightgray;">
                             搜尋細項
+                            <p><p><p></p></p></p>
                         </div>
                     </div>
                 </div>
                 <div id="latest" class="col-md-9">
-                    <div class="row">
-                        <div class="objectA"></div>
-                        <div class="objectA"></div>
-                    </div>
-                    <div class="row">
-                        <div class="objectA"></div>
-                        <div class="objectA"></div>
-                    </div>
-                    <div class="row">
-                        <div class="objectA"></div>
-                        <div class="objectA"></div>
-                    </div>
+                    <?php
+                    if(isset($_GET['page'])){
+                        $pageB = $_GET['page']*10;
+                        $pageT = $_GET['page']*10+9;
+                    }else{
+                        $pageB = 0;
+                        $pageT = 9;
+                    }
+                    $N = '';
+                    if(isset($_GET['county']) && $_GET['county'] != $N){
+                        $county = "= '".$_GET['county']."'";
+                    }else{
+                        $county = "IS NOT NULL";
+                    }
+                    if(isset($_GET['township']) && $_GET['township'] != $N){
+                        $township = "like '".$_GET['township']."%'";
+                    }else{
+                        $township = "IS NOT NULL";
+                    }
+                    if(isset($_GET['rentL']) && $_GET['rentL'] != $N){
+                        $rentL = ">= '".$_GET['rentL']."'";
+                    }else{
+                        $rentL = "IS NOT NULL";
+                    }
+                    if(isset($_GET['rentH']) && $_GET['rentH'] != $N){
+                        $rentH = "<= '".$_GET['rentH']."'";
+                    }else{
+                        $rentH = "IS NOT NULL";
+                    }
+                    $conn=require_once "config.php";
+                    $sql = "SELECT ID, title, description, rent FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." LIMIT ".$pageB.",".$pageT."";
+                    $result = mysqli_query($conn,$sql);
+                    if(mysqli_num_rows($result)!=0){
+                        $i = 0;
+                        while ($loop = $result->fetch_assoc()) {
+                            if($i == 0){
+                                echo '<div class="row"><div class="objectA"></div>';
+                                echo '<script>objectA('.$loop['ID'].');</script>';
+                                $i = 1;
+                            }else if($i == 1){
+                                echo '<div class="objectA"></div>';
+                                echo '<script>objectA('.$loop['ID'].');</script>';
+                                $i = 2;
+                            }else if($i == 2){
+                                echo '<div class="objectA"></div></div>';
+                                echo '<script>objectA('.$loop['ID'].');</script>';
+                                $i = 0;
+                            }
+                        }
+                    }else{
+                        echo '<H1>無房屋資料</H1>';
+                    }
+                    
+                    ?>
                 </div>
             </div>
         </div>

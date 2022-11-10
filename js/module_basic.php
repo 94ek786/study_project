@@ -132,37 +132,37 @@ function citydropdown(NULL) {
                             <div class="row">\
                                     <div class="col">\
                                         <li class="dropdown-header">北部</li>\
-                                        <li><a class="dropdown-item" href="search.php?city=台北市">台北市</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=新北市">新北市</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=桃園市">桃園市</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=新竹市">新竹市</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=新竹縣">新竹縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=宜蘭縣">宜蘭縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=基隆市">基隆市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=台北市">台北市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=新北市">新北市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=桃園市">桃園市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=新竹市">新竹市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=新竹縣">新竹縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=宜蘭縣">宜蘭縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=基隆市">基隆市</a></li>\
                                     </div>\
                                     <div class="col">\
                                         <li class="dropdown-header">中部</li>\
-                                        <li><a class="dropdown-item" href="search.php?city=台中市">台中市</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=彰化縣">彰化縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=雲林縣">雲林縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=苗栗縣">苗栗縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=南投縣">南投縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=台中市">台中市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=彰化縣">彰化縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=雲林縣">雲林縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=苗栗縣">苗栗縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=南投縣">南投縣</a></li>\
                                     </div>\
                                     <div class="col">\
                                         <li class="dropdown-header">南部</li>\
-                                        <li><a class="dropdown-item" href="search.php?city=高雄市">高雄市</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=台南市">台南市</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=嘉義市">嘉義市</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=嘉義縣">嘉義縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=屏東縣">屏東縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=高雄市">高雄市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=台南市">台南市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=嘉義市">嘉義市</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=嘉義縣">嘉義縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=屏東縣">屏東縣</a></li>\
                                     </div>\
                                     <div class="col">\
                                         <li class="dropdown-header">東部及外島</li>\
-                                        <li><a class="dropdown-item" href="search.php?city=台東縣">台東縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=花蓮縣">花蓮縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=澎湖縣">澎湖縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=金門縣">金門縣</a></li>\
-                                        <li><a class="dropdown-item" href="search.php?city=連江縣">連江縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=台東縣">台東縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=花蓮縣">花蓮縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=澎湖縣">澎湖縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=金門縣">金門縣</a></li>\
+                                        <li><a class="dropdown-item" href="search.php?county=連江縣">連江縣</a></li>\
                                     </div>\
                             </div>\
                         </ul>';
@@ -191,10 +191,8 @@ function is_login() {
 }
 
 //模塊化的房屋簡介及連結
-function objectA(NULL) {
-    i = 0;
+function objectA(i) {
     for (let loop of document.querySelectorAll('.objectA')) {
-        i++;
         loop.innerHTML = '\
                             <div class="outer">\
                                 <a href="house.php?id=' + String(i) + '">\
@@ -229,9 +227,6 @@ $(document).ready(function() {
     } catch {}
     try {
         is_login();
-    } catch {}
-    try {
-        objectA();
     } catch {}
 });
 
