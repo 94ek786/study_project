@@ -12,7 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <?php include 'js/module_basic.php'; ?>
-    <script type="text/javascript" src="js/search.js"></script>
 </head>
 
 <body>
@@ -21,7 +20,7 @@
             <form action="search.php" method="get">
                 <div class="row align-items-center" style="padding-top: 40px;padding-bottom: 40px;border-width:1px; border-style:solid;border-color: lightgray;">
                     <div class="col-md-2">
-                        <select required name="county">
+                        <select required name="county" id="Cselect">
                             <option label value="">請先選擇縣市</option>
                             <option value="台北市">台北市</option>
                             <option value="新北市">新北市</option>
@@ -47,6 +46,10 @@
                             <option value="連江縣">連江縣</option>
                         </select>
                     </div>
+                    <?php
+                    //將select自動選為網址上的條件
+                    echo '<script>document.getElementById("Cselect").value = "'.$_GET['county'].'";</script>';
+                    ?>
                         <input class="col-md-2" name="township" placeholder="輸入鄉鎮市區" value="<?php if(isset($_GET['township'])){echo $_GET['township'];} ?>">
                         價格區間：
                         <input class="col-md-2" name="rentL" placeholder="大於此價格"  value="<?php if(isset($_GET['rentL'])){echo $_GET['rentL'];} ?>">
@@ -110,15 +113,16 @@
                         while ($loop = $result->fetch_assoc()) {
                             if($i == 0){
                                 echo '<div class="row"><div class="objectA"></div>';
-                                echo '<script>objectA('.$loop['ID'].');</script>';
+                                echo '<script>objectA('.$loop['ID'].','.$loop['rent'].',"'.$loop['title'].'","'.$loop['description'].'");</script>';
+                                //echo '<script>alert("123!");</script>';
                                 $i = 1;
                             }else if($i == 1){
                                 echo '<div class="objectA"></div>';
-                                echo '<script>objectA('.$loop['ID'].');</script>';
+                                echo '<script>objectA('.$loop['ID'].','.$loop['rent'].',"'.$loop['title'].'","'.$loop['description'].'");</script>';
                                 $i = 2;
                             }else if($i == 2){
                                 echo '<div class="objectA"></div></div>';
-                                echo '<script>objectA('.$loop['ID'].');</script>';
+                                echo '<script>objectA('.$loop['ID'].','.$loop['rent'].',"'.$loop['title'].'","'.$loop['description'].'");</script>';
                                 $i = 0;
                             }
                         }

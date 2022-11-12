@@ -191,20 +191,20 @@ function is_login() {
 }
 
 //模塊化的房屋簡介及連結
-function objectA(i) {
+function objectA(id, rent, title, description) {
     for (let loop of document.querySelectorAll('.objectA')) {
         loop.innerHTML = '\
                             <div class="outer">\
-                                <a href="house.php?id=' + String(i) + '">\
+                                <a href="house.php?id=' + String(id) + '">\
                                     <div class="upper">\
-                                        <img src="img/testimg16-9.png">\
+                                        <img src="img/Himg_'+ String(id) +'_1.png" onerror="this.src=`img/Himg_'+ String(id) +'_1.jpg`">\
                                         <div class="innertext">\
-                                            <span>價格</span>\
+                                            <span>'+ String(rent) +'</span>\
                                         </div>\
                                     </div>\
                                     <div class="lower">\
-                                        <h3>標題</h3>\
-                                        <span>簡介</span>\
+                                        <h3>'+ title +'</h3>\
+                                        <span>'+ description +'</span>\
                                     </div>\
                                 </a>\
                             </div>';

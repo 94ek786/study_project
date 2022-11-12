@@ -86,8 +86,10 @@ function show_img($i){
         <div class="col-md-12"><?php echo $data['description']; ?></div>
         <p><p><p></p></p></p>
         <div class="col-md-12">
-            <button onclick="add_keep()">加入收藏</button>
-            <button onclick="to_massage()">聯繫屋主</button>
+            <form method="post" action="_add_keep.php">
+                <input type="hidden" name="ID" value="<?php echo $_GET['id']; ?>">
+                <input type="submit" name="submit" value="加入收藏">
+            </form>
         </div>
     </section>
     <section class="container">
