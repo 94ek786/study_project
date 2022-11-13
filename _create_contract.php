@@ -43,6 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $furniture = $_POST['furniture'];
     $public = $_POST['public'];
     $others = $_POST['others'];
+    $wallet_address = $_POST['wallet_address'];
     $rng = random_string(64);
 
     $loop = 0;
@@ -51,9 +52,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $result = mysqli_query($conn,$check);
         if(mysqli_num_rows($result)==0){
             $sql="INSERT INTO contract (landlord_ID, houseaddress, h_size, type, pattern, deposit, rent, utility_bill, parking, furniture, public, others, 
-            rent_Time_Start, rent_Time_End, area, landlord, rng)
+            rent_Time_Start, rent_Time_End, area, landlord, rng, wallet_address)
             VALUES('".$username."','".$houseaddress."','".$h_size."','".$type."','".$pattern."','".$deposit."','".$rent."','".$utility_bill."','".$parking."','".$furniture."',
-            '".$public."','".$others."','".$rent_Time_Start."','".$rent_Time_End."','".$area."','".$landlord."','".$rng."')";
+            '".$public."','".$others."','".$rent_Time_Start."','".$rent_Time_End."','".$area."','".$landlord."','".$rng."','".$wallet_address."')";
             if(mysqli_query($conn, $sql)){
                 echo '<div align="center">合約創建成功<br>點擊複製合約隨機碼：';
                 echo '<input id="id" readonly="readonly" style="cursor: pointer;" onclick="copyEvent()" value="'.$rng'">';

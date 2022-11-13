@@ -220,7 +220,7 @@ $(document).ready(function() {
         empty();
     } catch { console.log('naverror') }
     try {
-        Mfooter();
+        //Mfooter();
     } catch {}
     try {
         citydropdown();
