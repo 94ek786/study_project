@@ -38,6 +38,40 @@ $GLOBALS["n"] = 2;
     <section class="container">
         <p></p>
         <h1>收藏</h1>
+        <?php
+        $conn=require_once "config.php";
+        $sql = "SELECT * FROM collect WHERE user ='".$username."'";
+        $result = mysqli_query($conn,$sql);
+        while ($row = $result->fetch_assoc()) {
+            if(file_exists('img/Himg_'.$row['house'].'_1.png')){
+                $imgUrl = 'img/Himg_'.$row['house'].'_1.png';
+            }else if(file_exists('img/Himg_'.$row['house'].'_1.jpg')){
+                $imgUrl = 'img/Himg_'.$row['house'].'_1.jpg';
+            }else{
+                $imgUrl = 'img/testimg16-9.png';
+            }
+            $sql = "SELECT * FROM house WHERE ID ='".$row['house']."'";
+            $result = mysqli_query($conn,$sql);
+            $data = mysqli_fetch_assoc($result);
+            echo '
+            <div class="row align-items-center" style="border-style:solid;border-width:1px;border-color:lightgray;cursor: pointer;" onclick="to_H('.$row['house'].')">
+                <div class="col-md-2">
+                    <img src="'.$imgUrl.'">
+                </div>
+                <div class="col-md-4">
+                    <h4>'.$data['title'].'</h4>
+                    <h7 style="color:gray;">'.$data['description'].'</h7>
+                </div>
+                <div class="col-md-1">
+                    <form method="post" action="_uncollect.php">
+                        <input type="hidden" name="user" value="'.$username.'">
+                        <input type="hidden" name="house" value="'.$data['ID'].'">
+                        <input type="submit" name="submit" value="取消收藏">
+                    </form>
+                </div>
+            </div><br>';
+        }
+        ?>
         <p></p>
         <div class="citydropdown dropdown">尋找租屋</div>
         <p></p>

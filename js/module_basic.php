@@ -212,6 +212,10 @@ function objectA(id, rent, title, description) {
     }
 }
 
+function to_H(i){
+    location.href='house.php?id=' + i;
+};
+
 console.log
     //載入網站後執行此程式碼
 $(document).ready(function() {
