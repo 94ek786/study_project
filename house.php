@@ -25,6 +25,10 @@ function show_img($i){
         function change_img(i){
             var tep = document.getElementById('img'+i).src
             document.getElementById('mian_img').src = tep;
+            for (let loop of document.querySelectorAll('.img')){
+                loop.style.border = 'none';
+            }
+            document.getElementById('img'+i).style.border = 'solid blue';
         }
     </script>
 </head>
@@ -36,18 +40,18 @@ function show_img($i){
         </div>
         <p></p>
         <div class="row gap-1">
-            <div class="col-md-1"><img style="cursor: pointer;" id="img1"  onclick="change_img(1)" src="<?php  show_img(1); ?>" ></div>
-            <div class="col-md-1"><img style="cursor: pointer;" id="img2"  onclick="change_img(2)" src="<?php  show_img(2); ?>" ></div>
-            <div class="col-md-1"><img style="cursor: pointer;" id="img3"  onclick="change_img(3)" src="<?php  show_img(3); ?>" ></div>
-            <div class="col-md-1"><img style="cursor: pointer;" id="img4"  onclick="change_img(4)" src="<?php  show_img(4); ?>" ></div>
-            <div class="col-md-1"><img style="cursor: pointer;" id="img5"  onclick="change_img(5)" src="<?php  show_img(5); ?>" ></div>
-            <div class="col-md-1"><img style="cursor: pointer;" id="img6"  onclick="change_img(6)" src="<?php  show_img(6); ?>" ></div>
-            <div class="col-md-1"><img style="cursor: pointer;" id="img7"  onclick="change_img(7)" src="<?php  show_img(7); ?>" ></div>
-            <div class="col-md-1"><img style="cursor: pointer;" id="img8"  onclick="change_img(8)" src="<?php  show_img(8); ?>" ></div>
-            <div class="col-md-1"><img style="cursor: pointer;" id="img9"  onclick="change_img(9)" src="<?php  show_img(9); ?>" ></div>
-            <div class="col-md-1"><img style="cursor: pointer;" id="img10" onclick="change_img(10)" src="<?php show_img(10); ?>"></div>
-            <div class="col-md-1"><img style="cursor: pointer;" id="img11" onclick="change_img(11)" src="<?php show_img(11); ?>"></div>
-            <div class="col-md-1"><img style="cursor: pointer;" id="img12" onclick="change_img(12)" src="<?php show_img(12); ?>"></div>
+            <div class="col-md-1"><img style="cursor: pointer;border-color: blue;border-style: solid;" id="img1"  class="img" onclick="change_img(1)" src="<?php  show_img(1); ?>" ></div>
+            <div class="col-md-1"><img style="cursor: pointer;" id="img2"  class="img" onclick="change_img(2)" src="<?php  show_img(2); ?>" ></div>
+            <div class="col-md-1"><img style="cursor: pointer;" id="img3"  class="img" onclick="change_img(3)" src="<?php  show_img(3); ?>" ></div>
+            <div class="col-md-1"><img style="cursor: pointer;" id="img4"  class="img" onclick="change_img(4)" src="<?php  show_img(4); ?>" ></div>
+            <div class="col-md-1"><img style="cursor: pointer;" id="img5"  class="img" onclick="change_img(5)" src="<?php  show_img(5); ?>" ></div>
+            <div class="col-md-1"><img style="cursor: pointer;" id="img6"  class="img" onclick="change_img(6)" src="<?php  show_img(6); ?>" ></div>
+            <div class="col-md-1"><img style="cursor: pointer;" id="img7"  class="img" onclick="change_img(7)" src="<?php  show_img(7); ?>" ></div>
+            <div class="col-md-1"><img style="cursor: pointer;" id="img8"  class="img" onclick="change_img(8)" src="<?php  show_img(8); ?>" ></div>
+            <div class="col-md-1"><img style="cursor: pointer;" id="img9"  class="img" onclick="change_img(9)" src="<?php  show_img(9); ?>" ></div>
+            <div class="col-md-1"><img style="cursor: pointer;" id="img10" class="img" onclick="change_img(10)" src="<?php show_img(10); ?>"></div>
+            <div class="col-md-1"><img style="cursor: pointer;" id="img11" class="img" onclick="change_img(11)" src="<?php show_img(11); ?>"></div>
+            <div class="col-md-1"><img style="cursor: pointer;" id="img12" class="img" onclick="change_img(12)" src="<?php show_img(12); ?>"></div>
         </div>
     </section>
     <p></p>

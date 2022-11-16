@@ -3,7 +3,7 @@
     {
         var str = document.getElementById('id');
         window.getSelection().selectAllChildren(str);
-        document.execCommand("Copy")
+        document.execCommand("Copy");
     }
 </script>
 
@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             '".$public."','".$others."','".$rent_Time_Start."','".$rent_Time_End."','".$area."','".$landlord."','".$rng."','".$wallet_address."')";
             if(mysqli_query($conn, $sql)){
                 echo '<div align="center">合約創建成功<br>點擊複製合約隨機碼：';
-                echo '<input id="id" readonly="readonly" style="cursor: pointer;" onclick="copyEvent()" value="'.$rng'">';
+                echo '<div style="cursor: pointer;" onclick="copyEvent()" id="id">'.$rng.'</div>';
                 echo "<p></p><p></p><a href='login.php'>回到會員頁面請擊此</a></div>";
                 exit;
             }else{

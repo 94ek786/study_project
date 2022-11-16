@@ -106,7 +106,7 @@ if($_SERVER["REQUEST_METHOD"] != "POST"){
         <input required class="col-md-12" name="others" placeholder="如當家具損壞時之責任，公共設施使用規則等" value="<?php echo $data['others']; ?>">
         <p></p>
         <h2 class="col-md-12">輸入房客錢包地址</h2>
-        <input required class="col-md-12" name="" placeholder="" value="">
+        <input required class="col-md-12" name="wallet_address" placeholder="" value="">
         <p></p>
         <input type="submit" name="submit" value="確認">
     </form>

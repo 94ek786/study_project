@@ -110,6 +110,8 @@ $GLOBALS["n"] = 2;
     <section class="container">
         <h2 class="col-md-12">其他</h2>
         <input readonly="readonly" style="outline: none;border: 0;" required class="col-md-12" name="others" placeholder="如當家具損壞時之責任，公共設施使用規則等" value="<?php echo $data['others']; ?>">
+        <input type="hidden" name="tenant_ID" value="<?php echo $GLOBALS['username'] ?>">
+        <input type="hidden" name="rng" value="<?php echo $_GET['rng'] ?>">
         <p></p>
         <input type="submit" name="submit" value="確認">
     </form>
