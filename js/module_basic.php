@@ -197,7 +197,7 @@ function objectA(id, rent, title, description) {
                             <div class="outer">\
                                 <a href="house.php?id=' + String(id) + '">\
                                     <div class="upper">\
-                                        <img src="img/Himg_'+ String(id) +'_1.png" onerror="this.src=`img/Himg_'+ String(id) +'_1.jpg`">\
+                                        <img src="img/Himg_'+ String(id) +'_1.png" onerror="this.src=`img/Himg_'+ String(id) +'_1.jpg`" alt="一張圖片">\
                                         <div class="innertext">\
                                             <span>'+ String(rent) +'</span>\
                                         </div>\

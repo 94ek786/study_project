@@ -36,6 +36,7 @@ $GLOBALS["n"] = 2;
     ?>
     <section class="container">
     <form method="post" action="_contract.php">
+        <H1>確認合約</H1>
         <h2 class="col-md-12">房屋資料</h2>
         <div class="row">
             <h5 class="col-md-2">地址</h5>

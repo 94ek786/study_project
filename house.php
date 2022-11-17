@@ -61,6 +61,9 @@ function show_img($i){
         $sql = "SELECT * FROM house WHERE ID ='".$_GET['id']."'";
         $result = mysqli_query($conn,$sql);
         $data = mysqli_fetch_assoc($result);
+        if($data['img'] != '1'){
+            echo '<script>alert("此房屋尚未上傳圖片!");history.back();</script>';
+        }
         if(mysqli_num_rows($result)==1){
             echo '<h1 class="col-md-12">'.$data['title'].'</h1>';
             echo '<div class="row"><div class="col-md-1">地址</div><div class="col-md-11">'.$data['county'].$data['township'].$data['address'].'</div></div>';
@@ -76,7 +79,7 @@ function show_img($i){
             echo '<div class="col-md-1">家具設備</div><div class="col-md-3">'.$data['furniture'].'</div>';
             echo '<div class="col-md-1">公共設施</div><div class="col-md-3">'.$data['public'].'</div>';
             echo '</div><p></p><h3>其他</h3>';
-            echo '<div class="row">'.$data['others'].'</div>';
+            echo '<div class="row"><div class="col-md-12">'.$data['others'].'</div></div>';
         }else{
             echo '<script>alert("無此房屋資料!");history.back();</script>';
         }

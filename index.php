@@ -28,7 +28,7 @@
             </div>
         </div>
     </section>
-    <section id="second">
+    <!--<section id="second">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2 text-center">
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
     <section id="latest">
         <a name="NEWS"></a>
         <div class="container">
@@ -52,9 +52,17 @@
                 </div>
             </div>
             <div class="row">
-                <div class="objectA"></div>
-                <div class="objectA"></div>
-                <div class="objectA"></div>
+                <?php
+                $conn=require_once "config.php";
+                $sql = "SELECT * FROM house WHERE img='1' ORDER BY ID DESC LIMIT 3";
+                $result = mysqli_query($conn,$sql);
+                if(mysqli_num_rows($result)!=0){
+                    while ($loop = $result->fetch_assoc()) {
+                        echo '<div class="objectA"></div>';
+                        echo '<script>objectA('.$loop['ID'].','.$loop['rent'].',"'.$loop['title'].'","'.$loop['description'].'");</script>';
+                    }
+                }
+                ?>
             </div>
         </div>
     </section>

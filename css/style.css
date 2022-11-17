@@ -1,8 +1,11 @@
 .jumbotron {
     padding: 4rem 2rem;
     margin-bottom: 2rem;
-    background-color: var(--bs-light);
     border-radius: .3rem;
+    background-image: url(../img/index.jpg);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: 100%;
 }
 
 img {

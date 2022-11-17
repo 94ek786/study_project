@@ -34,6 +34,7 @@ if($_SERVER["REQUEST_METHOD"] != "POST"){
     ?>
     <section class="container">
     <form method="post" action="_create_contract.php">
+        <h1>開啟合約</h1>
         <h2 class="col-md-12">房屋資料</h2>
         <div class="row">
             <h5 class="col-md-2">地址</h5>

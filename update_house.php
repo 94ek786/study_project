@@ -30,6 +30,7 @@ if($_SERVER["REQUEST_METHOD"] != "POST"){
     <form method="post" action="_update_house.php">
         <input type="hidden" name="ID" value="<?php echo $_POST['ID']; ?>">
         <section class="container">
+            <h1>修改房屋資料</h1>
             <h2 class="col-md-12">房屋資料</h2>
             <div class="row">
                 <h5 class="col-md-2">標題</h5>

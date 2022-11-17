@@ -78,8 +78,8 @@
                 <div id="latest" class="col-md-9">
                     <?php
                     if(isset($_GET['page'])){
-                        $pageB = $_GET['page']*10;
-                        $pageT = $_GET['page']*10+9;
+                        $pageB = $_GET['page']*15;
+                        $pageT = $_GET['page']*15+14;
                     }else{
                         $pageB = 0;
                         $pageT = 9;
@@ -106,7 +106,7 @@
                         $rentH = "IS NOT NULL";
                     }
                     $conn=require_once "config.php";
-                    $sql = "SELECT ID, title, description, rent FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." LIMIT ".$pageB.",".$pageT."";
+                    $sql = "SELECT ID, title, description, rent FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." and img='1' LIMIT ".$pageB.",".$pageT."";
                     $result = mysqli_query($conn,$sql);
                     if(mysqli_num_rows($result)!=0){
                         $i = 0;

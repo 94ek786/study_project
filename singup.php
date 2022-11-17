@@ -30,17 +30,20 @@ $GLOBALS["n"] = 3;
                             <option value="landlord">房東</option>
                         </select>
                         <p></p>
-                        帳號
+                        帳號&emsp;&emsp;
                         <input autofocus required name="username">
                         <p></p>
-                        密碼
+                        密碼&emsp;&emsp;
                         <input required name="password">
                         <p></p>
-                        信箱
+                        信箱&emsp;&emsp;
                         <input required name="email" type="email">
                         <p></p>
-                        姓名
+                        姓名&emsp;&emsp;
                         <input required name="name" placeholder="請輸入真實姓名">
+                        <p></p>
+                        電話號碼
+                        <input required name="phone">
                         <p></p>
                         <input type="submit" name="submit" value="註冊">
                     </form>

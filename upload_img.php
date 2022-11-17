@@ -7,9 +7,12 @@ if($_SERVER["REQUEST_METHOD"] != "POST"){
 function show_img($i){
     if(file_exists('img/Himg_'.$_POST['ID'].'_'.$i.'.jpg')){
         echo 'img/Himg_'.$_POST['ID'].'_'.$i.'.jpg';
+        return false;
     }elseif(file_exists('img/Himg_'.$_POST['ID'].'_'.$i.'.png')){
         echo 'img/Himg_'.$_POST['ID'].'_'.$i.'.png';
+        return false;
     }
+    return true;
 }
 ?>
 <!DOCTYPE html>
@@ -33,7 +36,7 @@ function show_img($i){
         <H3>上傳圖片</H3>
         <form action="_upload_img.php" method="post" enctype="multipart/form-data">
             <p style="color:red;">*第一張圖片必要的<br>最多12張照片<br>只能上傳.png或.jpg檔</p>
-            1. <input type="file" name="img1" ><div class="col-md-5"><img src="<?php show_img(1); ?>"></div><p></p>
+            1. <input <?php if(show_img(1)){echo 'required';} ?> type="file" name="img1" ><div class="col-md-5"><img src="<?php show_img(1); ?>"></div><p></p>
             2. <input type="file" name="img2" ><div class="col-md-5"><img src="<?php show_img(2); ?>"></div><p></P>
             3. <input type="file" name="img3" ><div class="col-md-5"><img src="<?php show_img(3); ?>"></div><p></P>
             4. <input type="file" name="img4" ><div class="col-md-5"><img src="<?php show_img(4); ?>"></div><p></P>
@@ -46,7 +49,7 @@ function show_img($i){
             11.<input type="file" name="img11"><div class="col-md-5"><img src="<?php show_img(11);?>"></div><p></p>
             12.<input type="file" name="img12"><div class="col-md-5"><img src="<?php show_img(12);?>"></div><p></p>
             <input type="hidden" name="ID" value="<?php echo $_POST['ID']; ?>">
-            <input type="submit" name="submit" value="上傳檔案">
+            <input type="submit" name="submit" value="圖片上傳">
         </form>
     </div>
 </body>

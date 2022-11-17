@@ -56,9 +56,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             VALUES('".$username."','".$houseaddress."','".$h_size."','".$type."','".$pattern."','".$deposit."','".$rent."','".$utility_bill."','".$parking."','".$furniture."',
             '".$public."','".$others."','".$rent_Time_Start."','".$rent_Time_End."','".$area."','".$landlord."','".$rng."','".$wallet_address."')";
             if(mysqli_query($conn, $sql)){
-                echo '<div align="center">合約創建成功<br>點擊複製合約隨機碼：';
-                echo '<div style="cursor: pointer;" onclick="copyEvent()" id="id">'.$rng.'</div>';
-                echo "<p></p><p></p><a href='login.php'>回到會員頁面請擊此</a></div>";
+                echo '<div style="height: 100vh;background-image: url(img/index.jpg);background-size:cover;background-position: 100%;background-repeat: no-repeat;"><div style="height: 35vh;"></div><div align="center">合約創建成功<br><P></P><p></p>點擊複製合約隨機碼：';
+                echo '<h2 style="cursor: pointer;" onclick="copyEvent()" id="id">'.$rng.'</h2>';
+                echo "<p></p><p></p><a href='login.php'>回到會員頁面請擊此</a></div></div>";
                 exit;
             }else{
                 echo "伺服器似乎出問題了 :" . mysqli_error($conn);
