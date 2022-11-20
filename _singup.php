@@ -10,12 +10,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $email=$_POST["email"];
     $type=$_POST["type"];
     $name=$_POST["name"];
+    $phone=$_POST["phone"]
     //檢查帳號是否重複
     $check="SELECT * FROM users WHERE username='".$username."'";
     $result = mysqli_query($conn,$check);
     if(mysqli_num_rows($result)==0){
-        $sql="INSERT INTO users (username, password, email, type, name)
-            VALUES('".$username."','".$password."','".$email."','".$type."','".$name."')";
+        $sql="INSERT INTO users (username, password, email, type, name, phone)
+            VALUES('".$username."','".$password."','".$email."','".$type."','".$name."','".$phone."')";
         
         if(mysqli_query($conn, $sql)){
             echo "註冊成功!3秒後將自動跳轉頁面<br>";

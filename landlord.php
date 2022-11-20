@@ -52,12 +52,17 @@ $GLOBALS["n"] = 4;
                 $remain_D = '目前尚無空房點';
                 $remain_B = '切換為有空房';
             }
+            if($row['img'] != 1){
+                $img = '尚未上傳圖片!!';
+            }else{
+                $img = '';
+            }
             echo '
             <div class="row align-items-center" style="border-style:solid;border-width:1px;border-color:lightgray;cursor: pointer;" onclick="to_H('.$row['ID'].')">
                 <div class="col-md-2">
                     <img src="'.$imgUrl.'">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <h4>'.$row['title'].'</h4>
                     <h7 style="color:gray;">'.$row['description'].'</h7>
                 </div>
@@ -88,10 +93,33 @@ $GLOBALS["n"] = 4;
                         <input type="submit" name="submit" value="開啟合約">
                     </form>
                 </div>
+                <div class="col-md-2" style="color:red;">'.$img.'</div>
             </div><br>';
         }
         ?>
         <a href="enter_house.php">出租房屋</a>
+        <section class="container">
+        <p></p>
+        <h1>開啟的合約</h1>
+        <p></p>
+        <?php
+        $sql = "SELECT * FROM contract WHERE landlord_ID ='".$GLOBALS["username"]."'";
+        $result = mysqli_query($conn,$sql);
+        $loop = 1;
+        while ($row = $result->fetch_assoc()) {
+            echo '
+                <div class="row">
+                    <div class="col-md">地址<div id="contract'.$loop.'"></div></div>
+                </div>
+                <script>
+                    i = loadcontract('.$row['ID'].');
+                    alert(i["houseaddress"]);
+                    document.getElementById("contract'.$loop.'").innerHTML = i["houseaddress"];
+                </script>';
+            $loop++;
+        }
+        ?>
+        </section>
         <hr>
     </section>
 </body>

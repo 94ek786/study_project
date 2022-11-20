@@ -41,8 +41,8 @@ $GLOBALS["n"] = 2;
         <?php
         $conn=require_once "config.php";
         $sql = "SELECT * FROM collect WHERE user ='".$username."'";
-        $result = mysqli_query($conn,$sql);
-        while ($row = $result->fetch_assoc()) {
+        $result1 = mysqli_query($conn,$sql);
+        while ($row = $result1->fetch_assoc()) {
             if(file_exists('img/Himg_'.$row['house'].'_1.png')){
                 $imgUrl = 'img/Himg_'.$row['house'].'_1.png';
             }else if(file_exists('img/Himg_'.$row['house'].'_1.jpg')){
@@ -53,6 +53,13 @@ $GLOBALS["n"] = 2;
             $sql = "SELECT * FROM house WHERE ID ='".$row['house']."'";
             $result = mysqli_query($conn,$sql);
             $data = mysqli_fetch_assoc($result);
+            if($data['remain'] == 1){
+                $color = 'green';
+                $remain_D = '目前有空房';
+            }else{
+                $color = 'red';
+                $remain_D = '目前無空房';
+            }
             echo '
             <div class="row align-items-center" style="border-style:solid;border-width:1px;border-color:lightgray;cursor: pointer;" onclick="to_H('.$row['house'].')">
                 <div class="col-md-2">
@@ -68,6 +75,9 @@ $GLOBALS["n"] = 2;
                         <input type="hidden" name="house" value="'.$data['ID'].'">
                         <input type="submit" name="submit" value="取消收藏">
                     </form>
+                </div>
+                <div class="col-md-1">
+                    <div style="border:10px solid;width:20px;height:20px;border-radius:50%;color:'.$color.';"></div>'.$remain_D.'
                 </div>
             </div><br>';
         }

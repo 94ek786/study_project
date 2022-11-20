@@ -106,6 +106,11 @@
                         $rentH = "IS NOT NULL";
                     }
                     $conn=require_once "config.php";
+                    $sql = "SELECT count( * ) as count FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." and img='1' LIMIT ".$pageB.",".$pageT."";
+                    $result = mysqli_query($conn,$sql);
+                    $data = $result->fetch_assoc();
+                    $count = $data['count'];
+                    echo '<script>console.log("此收尋條件總共有'.$count.'筆資料");</script>';
                     $sql = "SELECT ID, title, description, rent FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." and img='1' LIMIT ".$pageB.",".$pageT."";
                     $result = mysqli_query($conn,$sql);
                     if(mysqli_num_rows($result)!=0){
@@ -121,10 +126,16 @@
                                 echo '<script>objectA('.$loop['ID'].','.$loop['rent'].',"'.$loop['title'].'","'.$loop['description'].'");</script>';
                                 $i = 2;
                             }else if($i == 2){
-                                echo '<div class="objectA"></div></div>';
+                                echo '<div class="objectA"></div></div><p></p>';
                                 echo '<script>objectA('.$loop['ID'].','.$loop['rent'].',"'.$loop['title'].'","'.$loop['description'].'");</script>';
                                 $i = 0;
                             }
+                        }
+                        if($i == 1){
+                            echo '<div class="col-md"></div>';
+                            echo '<div class="col-md"></div></div>';
+                        }else if($i == 2){
+                            echo '<div class="col-md"></div></div>';
                         }
                     }else{
                         echo '<H1>無房屋資料</H1>';
