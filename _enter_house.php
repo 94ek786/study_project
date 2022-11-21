@@ -27,9 +27,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     VALUES('".$username."','".$county."','".$township."','".$address."','".$h_size."','".$type."','".$pattern."','".$deposit."','".$rent."','".$utility_bill."',
     '".$parking."','".$furniture."','".$public."','".$others."','".$description."','".$title."','0')";
     if(mysqli_query($conn, $sql)){
-        echo "房屋基本資料填寫成功!3秒後將自動跳轉頁面<br>";
-        echo "<a href='login.php'>未成功跳轉頁面請點擊此</a>";
-        echo "<meta http-equiv='refresh' content='3;url=login.php'>";
+        $sql = "SELECT * FROM house WHERE owner = '".$username."' ORDER BY ID DESC LIMIT 1";
+        $result = mysqli_query($conn,$sql);
+        $data = $result->fetch_assoc();
+        echo '
+            <form method="post" action="upload_img.php">
+                <input type="hidden" name="ID" value="'.$data['ID'].'">
+                <input id="but" type="submit" name="submit" value="上傳圖片">
+            </form>
+            <script>document.getElementById("but").click();</script>';
         exit;
     }else{
         echo "伺服器似乎出問題了 :" . mysqli_error($conn);
