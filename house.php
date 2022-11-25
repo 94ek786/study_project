@@ -108,7 +108,7 @@ function show_img($i){
         <div class="col-md-12">
             <form method="post" action="_add_keep.php">
                 <input type="hidden" name="ID" value="<?php echo $_GET['id']; ?>">
-                <input type="submit" name="submit" value="加入收藏">
+                <input class="btn btn-info" type="submit" name="submit" value="加入收藏">
             </form>
         </div>
     </section>

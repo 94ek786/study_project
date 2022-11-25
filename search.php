@@ -50,15 +50,23 @@
                     //將select自動選為網址上的條件
                     echo '<script>document.getElementById("Cselect").value = "'.$_GET['county'].'";</script>';
                     ?>
-                        <input class="col-md-2" name="township" placeholder="輸入鄉鎮市區" value="<?php if(isset($_GET['township'])){echo $_GET['township'];} ?>">
+                    <div class="col-md-2">
+                        <input name="township" placeholder="輸入鄉鎮市區" value="<?php if(isset($_GET['township'])){echo $_GET['township'];} ?>">
+                    </div>
+                    <div class="col-md-1">
                         價格區間：
-                        <input class="col-md-2" name="rentL" placeholder="大於此價格"  value="<?php if(isset($_GET['rentL'])){echo $_GET['rentL'];} ?>">
+                    </div>
+                    <div class="col-md-2">
+                        <input name="rentL" placeholder="大於此價格"  value="<?php if(isset($_GET['rentL'])){echo $_GET['rentL'];} ?>">
+                    </div>
                     <div class="col-md-1 text-center">
                         ~
                     </div>
-                        <input class="col-md-2" name="rentH" placeholder="小於此價格"  value="<?php if(isset($_GET['rentH'])){echo $_GET['rentH'];} ?>">
                     <div class="col-md-2">
-                        <input type="submit" name="submit" value="搜尋">
+                        <input name="rentH" placeholder="小於此價格"  value="<?php if(isset($_GET['rentH'])){echo $_GET['rentH'];} ?>">
+                    </div>
+                    <div class="col-md-2">
+                        <input class="btn btn-outline-secondary" type="submit" name="submit" value="搜尋">
                     </div>
                 </div>
             </form>
@@ -106,7 +114,7 @@
                         $rentH = "IS NOT NULL";
                     }
                     $conn=require_once "config.php";
-                    $sql = "SELECT count( * ) as count FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." and img='1' LIMIT ".$pageB.",".$pageT."";
+                    $sql = "SELECT count( * ) as count FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." and img='1'";
                     $result = mysqli_query($conn,$sql);
                     $data = $result->fetch_assoc();
                     $count = $data['count'];

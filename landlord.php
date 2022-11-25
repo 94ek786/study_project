@@ -23,6 +23,7 @@ $GLOBALS["n"] = 4;
         <?php
         $username = $GLOBALS["username"];
         echo "<h1>用戶".$username."</h1>";
+        echo "<a class='btn btn-outline-danger' href='_logout.php'>點此登出</a>";
         ?>
         <p></p>
         <hr>
@@ -30,6 +31,8 @@ $GLOBALS["n"] = 4;
     <section class="container">
         <p></p>
         <h1>出租中</h1>
+        <p></p>
+        <a class="btn btn-primary" href="enter_house.php">出租房屋</a>
         <p></p>
         <?php
         $conn=require_once "config.php";
@@ -72,32 +75,31 @@ $GLOBALS["n"] = 4;
                         <input type="hidden" name="ID" value="'.$row['ID'].'">
                         <input type="hidden" name="remain" value="'.$row['remain'].'">
                         '.$remain_D.'
-                        <input type="submit" name="submit" value="'.$remain_B.'">
+                        <input class="btn btn-secondary" type="submit" name="submit" value="'.$remain_B.'">
                     </form>
                 </div>
                 <div class="col-md-1">
                     <form method="post" action="upload_img.php">
                         <input type="hidden" name="ID" value="'.$row['ID'].'">
-                        <input type="submit" name="submit" value="上傳圖片">
+                        <input class="btn btn-outline-secondary" type="submit" name="submit" value="上傳圖片">
                     </form>
                 </div>
                 <div class="col-md-1">
                     <form method="post" action="update_house.php">
                         <input type="hidden" name="ID" value="'.$row['ID'].'">
-                        <input type="submit" name="submit" value="修改內容">
+                        <input class="btn btn-outline-secondary" type="submit" name="submit" value="修改內容">
                     </form>
                 </div>
                 <div class="col-md-1">
                     <form method="post" action="create_contract.php">
                         <input type="hidden" name="ID" value="'.$row['ID'].'">
-                        <input type="submit" name="submit" value="開啟合約">
+                        <input class="btn btn-outline-danger" type="submit" name="submit" value="開啟合約">
                     </form>
                 </div>
                 <div class="col-md-2" style="color:red;">'.$img.'</div>
             </div><br>';
         }
         ?>
-        <a href="enter_house.php">出租房屋</a>
         <section class="container">
         <p></p>
         <h1>開啟的合約</h1>

@@ -30,7 +30,7 @@ $GLOBALS["n"] = 2;
         <?php
         $username = $GLOBALS["username"];
         echo "<h1>用戶".$username."</h1>";
-        echo "<a href='_logout.php'>點此登出</a>";
+        echo "<a class='btn btn-outline-danger' href='_logout.php'>點此登出</a>";
         ?>
         <p></p>
         <hr>
@@ -73,7 +73,7 @@ $GLOBALS["n"] = 2;
                     <form method="post" action="_uncollect.php">
                         <input type="hidden" name="user" value="'.$username.'">
                         <input type="hidden" name="house" value="'.$data['ID'].'">
-                        <input type="submit" name="submit" value="取消收藏">
+                        <input class="btn btn-outline-warning" type="submit" name="submit" value="取消收藏">
                     </form>
                 </div>
                 <div class="col-md-1">
@@ -86,8 +86,10 @@ $GLOBALS["n"] = 2;
         <div class="citydropdown dropdown">尋找租屋</div>
         <p></p>
         <div class="row">
-            <div class="col-md-8">輸入代碼進入簽約<input id="rng" type="text"></div>
-            <div class="col-md-4"><button onclick="to_contract()">確認</button></div>
+            <div class="col-md">
+                輸入代碼進入簽約<input id="rng" type="text">
+                <button class="btn btn-secondary" onclick="to_contract()">確認</button>
+            </div>
         </div>
         <hr>
     </section>

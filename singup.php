@@ -45,7 +45,7 @@ $GLOBALS["n"] = 3;
                         電話號碼
                         <input required name="phone">
                         <p></p>
-                        <input type="submit" name="submit" value="註冊">
+                        <input class="btn btn-secondary" type="submit" name="submit" value="註冊">
                     </form>
                     <br>
                     <a href="login.php">我已有帳號點此登入</a>

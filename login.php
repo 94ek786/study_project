@@ -30,7 +30,7 @@ $GLOBALS["n"] = 3;
                     密碼
                     <input required type="password" name="password">
                     <p></p>
-                    <input type="submit" name="submit" value="登入">
+                    <input class="btn btn-secondary" type="submit" name="submit" value="登入">
                     </form>
                     <br>
                     <a href="singup.php">我沒有帳號點此註冊</a>
