@@ -15,8 +15,10 @@ $GLOBALS["n"] = 2;
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <?php include 'js/module_basic.php'; ?>
-    <style>
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.6.0/web3.min.js"></script>
+    <script type="text/javascript" src="js/contract_abi.js"></script>
+    <script type="text/javascript" src="js/signAgreement.js"></script>
 </head>
 
 <body>
@@ -113,8 +115,9 @@ $GLOBALS["n"] = 2;
         <input readonly="readonly" style="outline: none;border: 0;" required class="col-md-12" name="others" placeholder="如當家具損壞時之責任，公共設施使用規則等" value="<?php echo $data['others']; ?>">
         <input type="hidden" name="tenant_ID" value="<?php echo $GLOBALS['username'] ?>">
         <input type="hidden" name="rng" value="<?php echo $_GET['rng'] ?>">
+        <input required  type="hidden" class="col-md-12" id="Search" name="wallet_address" placeholder="" value="<?php echo $data['ID']; ?>">
         <p></p>
-        <input type="submit" name="submit" value="確認">
+        <input type="submit" class="up4" name="submit" value="確認">
     </form>
     </section>
     <footer id="Mfooter">
