@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] != "POST"){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.6.0/web3.min.js"></script>
     <script type="text/javascript" src="js/contract_abi.js"></script>
-    <script type="text/javascript" src="js/contract copy.js"></script>
+    <script type="text/javascript" src="js/contract_copy.js"></script>
 </head>
 
 <body>
@@ -111,15 +111,9 @@ if($_SERVER["REQUEST_METHOD"] != "POST"){
         <h2 class="col-md-12">輸入房客錢包地址</h2>
         <input required class="col-md-12" id="tenantVerify" name="wallet_address" placeholder="" value="">
         <p></p>
-        <input type="submit" name="submit" value="確認">
-
-        <button class="up1">上傳1</button>
-        <input required class="col-md-12" id="Search" name="wallet_address" placeholder="" value="">
+        <input type="submit" class="up1" name="submit" value="確認">
     </form>
-    <button class="up2">查詢租金</button>
     </section>
-    
-    
     <footer id="Mfooter">
     </footer>
 </body>

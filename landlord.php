@@ -1,6 +1,9 @@
 <?php
 $GLOBALS["n"] = 4;
 ?>
+<script>
+    var landlord_n = 1;
+</script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +31,9 @@ $GLOBALS["n"] = 4;
         $username = $GLOBALS["username"];
         echo "<h1>用戶".$username."</h1>";
         echo "<a class='btn btn-outline-danger' href='_logout.php'>點此登出</a>";
+        if(isset($_GET['no_matamask']) == true){
+            echo "<h1 style='color:red;'>需使用電腦並安裝MataMask才可將交易寫入區塊鍊</h1>";
+        }
         ?>
         <p></p>
         <hr>
@@ -93,62 +99,56 @@ $GLOBALS["n"] = 4;
                         <input type="hidden" name="ID" value="'.$row['ID'].'">
                         <input class="btn btn-outline-secondary" type="submit" name="submit" value="修改內容">
                     </form>
-                </div>
+                </div>';
+            if(isset($_GET['no_matamask']) != true){
+                echo '
                 <div class="col-md-1">
                     <form method="post" action="create_contract.php">
                         <input type="hidden" name="ID" value="'.$row['ID'].'">
                         <input class="btn btn-outline-danger" type="submit" name="submit" value="開啟合約">
                     </form>
-                </div>
-                <div class="col-md-2" style="color:red;">'.$img.'</div>
-            </div><br>';
+                </div>';
+            }
+            echo '<div class="col-md-2" style="color:red;">'.$img.'</div></div><br>';
         }
         ?>
-        <a href="enter_house.php">出租房屋</a>
-        <section class="container">
-        <p></p>
-        <h1>開啟的合約</h1>
-        <p></p>
+    <section class="container">
         <?php
-        $sql = "SELECT * FROM contract WHERE landlord_ID ='".$GLOBALS["username"]."'";
-        $result = mysqli_query($conn,$sql);
-        $loop = 1;
-        while ($row = $result->fetch_assoc()) {
-            echo '
-                <div class="row">
-                    <div class="col-md">地址<div id="contract'.$loop.'"></div></div>
-                </div>
-                <script>
-                $(document).ready(function() {
-                      i = '.$row['ID'].';
-                    loadcontract(i).then(v => {
-                         document.getElementById("contract'.$loop.'").innerHTML = v;
-                       // alert (v);   prints 60 after 4 seconds.
-                      });
-                    });
-                </script>';
-            $loop++;
+        if(isset($_GET['no_matamask']) != true){
+            echo '<p></p>
+                <h1>開啟的合約</h1>
+                <p></p>';
+            $sql = "SELECT * FROM contract WHERE landlord_ID ='".$GLOBALS["username"]."'";
+            $result = mysqli_query($conn,$sql);
+            $loop = 1;
+            while ($row = $result->fetch_assoc()) {
+                echo '
+                    <div class="row">
+                        <div class="col-md">地址<div id="contract'.$loop.'"></div></div>
+                    </div>
+                    <script>
+                        $(document).ready(function() {
+                            i = '.$row['ID'].';
+                            loadcontract(i).then(v => {
+                                document.getElementById("contract'.$loop.'").innerHTML = v;
+                                // alert (v);   prints 60 after 4 seconds.
+                            });
+                        });
+                    </script>';
+                $loop++;
+            }
         }
         ?>
-       
-        </section>
-        <script>
-        function resolveAfter2Seconds(x) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(x);
-    }, 2000);
-  });
-}
-
-
-
-</script>
-          <input required class="col-md-10" id="Search" name="search4" placeholder="房號ID">
-        <button class="up6">上傳1</button>
-        <hr>
-      
     </section>
+    <script>
+        function resolveAfter2Seconds(x) {
+            return new Promise(resolve => {
+                setTimeout(() => {resolve(x);}, 2000);
+            });
+        }
+    </script>
+    <footer id="Mfooter">
+    </footer>
 </body>
 
 </html>

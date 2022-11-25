@@ -23,7 +23,7 @@ window.addEventListener('load', async() => {
 }
 */
 function startApp() {
-    var name1 = '0xEbB80E5f0836beC0CfD7E9e6dFaF8F04A0A4179b';
+    var name1 = '0x433Bf0cC0b41569b7b507be587d296636a122615';
     search = new web3js.eth.Contract(LeaseContract, name1);
     userAccount = web3.currentProvider.selectedAddress;
 

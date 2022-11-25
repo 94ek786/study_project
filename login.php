@@ -34,8 +34,6 @@ $GLOBALS["n"] = 3;
                     </form>
                     <br>
                     <a href="singup.php">我沒有帳號點此註冊</a>
-                    <p></p>
-                    <a href="forgot.php">忘記密碼</a>
                 </div>
             </div>
         </div>

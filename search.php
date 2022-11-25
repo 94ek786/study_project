@@ -12,6 +12,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <?php include 'js/module_basic.php'; ?>
+    <script>
+        function p(){
+            document.getElementById('submit').click();
+        }
+    </script>
 </head>
 
 <body>
@@ -48,7 +53,9 @@
                     </div>
                     <?php
                     //將select自動選為網址上的條件
-                    echo '<script>document.getElementById("Cselect").value = "'.$_GET['county'].'";</script>';
+                    if(isset($_GET['county'])){
+                        echo '<script>document.getElementById("Cselect").value = "'.$_GET['county'].'";</script>';
+                    }
                     ?>
                     <div class="col-md-2">
                         <input name="township" placeholder="輸入鄉鎮市區" value="<?php if(isset($_GET['township'])){echo $_GET['township'];} ?>">
@@ -66,10 +73,9 @@
                         <input name="rentH" placeholder="小於此價格"  value="<?php if(isset($_GET['rentH'])){echo $_GET['rentH'];} ?>">
                     </div>
                     <div class="col-md-2">
-                        <input class="btn btn-outline-secondary" type="submit" name="submit" value="搜尋">
+                        <input id="submit" class="btn btn-outline-secondary" type="submit" name="submit" value="搜尋">
                     </div>
                 </div>
-            </form>
             <p></p>
             <div class="row">
                 <div class="col-md-3 d-flex flex-column">
@@ -78,11 +84,16 @@
                     </button>
                     <div class="collapse d-md-block" id="filter">
                         <div class="card card-body" style="background-color: lightgray;">
-                            搜尋細項
-                            <p><p><p></p></p></p>
+                            搜尋細項<p></p>
+                            <div><input Onclick="p()" type="checkbox" name="remain" value="1" <?php if(isset($_GET['remain']) && $_GET['remain'] == '1'){echo 'checked';} ?>>目前有空房<br></div>
+                            <div><input Onclick="p()" type="checkbox" name="parking" value="1" <?php if(isset($_GET['parking']) && $_GET['parking'] == '1'){echo 'checked';} ?>>有停車位<br></div>
+                            <p></p>
+                            排序方法<p></p>
+                            <div><input Onclick="p()" type="checkbox" name="sort" value="1">日期最早<br></div>
                         </div>
                     </div>
                 </div>
+            </form>
                 <div id="latest" class="col-md-9">
                     <?php
                     if(isset($_GET['page'])){
@@ -113,13 +124,23 @@
                     }else{
                         $rentH = "IS NOT NULL";
                     }
+                    if(isset($_POST['parking']) && $POST['parking'] != $N){
+                        $parking = "= '".$_POST['parking']."'";
+                    }else{
+                        $parking = "IS NOT NULL";
+                    }
+                    if(isset($_POST['remain']) && $_POST['remain'] != $N){
+                        $remain = "= '".$_POST['remain']."'";
+                    }else{
+                        $remain = "IS NOT NULL";
+                    }
                     $conn=require_once "config.php";
-                    $sql = "SELECT count( * ) as count FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." and img='1'";
+                    $sql = "SELECT count( * ) as count FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." and parking ".$parking." and remain ".$remain." and img='1'";
                     $result = mysqli_query($conn,$sql);
                     $data = $result->fetch_assoc();
                     $count = $data['count'];
                     echo '<script>console.log("此收尋條件總共有'.$count.'筆資料");</script>';
-                    $sql = "SELECT ID, title, description, rent FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." and img='1' LIMIT ".$pageB.",".$pageT."";
+                    $sql = "SELECT ID, title, description, rent FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." and parking ".$parking." and remain ".$remain." and img='1' LIMIT ".$pageB.",".$pageT."";
                     $result = mysqli_query($conn,$sql);
                     if(mysqli_num_rows($result)!=0){
                         $i = 0;
