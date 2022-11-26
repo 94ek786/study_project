@@ -109,7 +109,7 @@ p.lead {
 }
 
 #latest .innertext span {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.8);
     padding: 6px 15px;
     border-radius: 20px;
 }

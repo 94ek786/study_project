@@ -75,42 +75,79 @@ function show_img($i){
                 $color = 'red';
                 $remain_D = '目前無空房';
             }
-            echo '<h1 class="col-md-12">'.$data['title'].'</h1>';
-            echo '<div class="row"><div class=""col-md><div style="border:10px solid;width:20px;height:20px;border-radius:50%;color:'.$color.';"></div><h4>'.$remain_D.'</h4></div></div>';
-            echo '<div class="row"><div class="col-md-1">地址</div><div class="col-md-11">'.$data['county'].$data['township'].$data['address'].'</div></div>';
-            echo '<div class="row"><div class="col-md-1">坪數</div><div class="col-md-3">'.$data['h_size'].'</div>';
-            echo '<div class="col-md-1">類型</div><div class="col-md-3">'.$data['type'].'</div>';
-            echo '<div class="col-md-1">建物格局</div><div class="col-md-3">'.$data['pattern'].'</div>';
-            echo '</div><p></p><h3>費用</h3>';
-            echo '<div class="row"><div class="col-md-1">押金</div><div class="col-md-3">'.$data['deposit'].'</div>';
-            echo '<div class="col-md-1">租金</div><div class="col-md-3">'.$data['rent'].'</div>';
-            echo '<div class="col-md-1">水電費</div><div class="col-md-3">'.$data['utility_bill'].'</div>';
-            echo '</div><p></p><h3>設施設備</h3>';
-            echo '<div class="row"><div class="col-md-1">車位</div><div class="col-md-3">'.$data['parking'].'</div>';
-            echo '<div class="col-md-1">家具設備</div><div class="col-md-3">'.$data['furniture'].'</div>';
-            echo '<div class="col-md-1">公共設施</div><div class="col-md-3">'.$data['public'].'</div>';
-            echo '</div><p></p><h3>其他</h3>';
-            echo '<div class="row"><div class="col-md-12">'.$data['others'].'</div></div>';
-            echo '</div><p></p><h3>聯絡屋主</h3>';
-            echo '<div class="row"><div class="col-md-6"> 電話號碼：'.$ownerdata['phone'].'</div><div class="col-md-6"> 電子郵件：'.$ownerdata['email'].'</div></div>';
+            echo '<h1 class="col-md-12">'.$data['title'].'</h1>
+                <hr>
+                <div class="row">
+                    <div class="col-md-9">
+                        <h2>屋主說明</h2>
+                        <div>'.$data['description'].'</div>
+                        <p><p>
+                        <table class="table table-bordered">
+                            <tr class="border-3 border-secondary">
+                                <td colspan="1" class="border-end-0 border-3 border-secondary">地址</td>
+                                <td colspan="7" class="border-start border-0 border-secondary">'.$data['county'].$data['township'].$data['address'].'</td>
+                                <td colspan="1" class="border-end-0 border-3 border-secondary">坪數</td>
+                                <td colspan="3" class="border-start border-0 border-secondary">'.$data['h_size'].'</td>
+                            </tr>
+                            <tr class="border-3 border-secondary">
+                                <td colspan="1" class="border-end-0 border-3 border-secondary">類型</td>
+                                <td colspan="3" class="border-start border-0 border-secondary">'.$data['type'].'</td>
+                                <td colspan="1" class="border-end-0 border-3 border-secondary">格局</td>
+                                <td colspan="3" class="border-start border-0 border-secondary">'.$data['pattern'].'</td>
+                                <td colspan="1" class="border-end-0 border-3 border-secondary">押金</td>
+                                <td colspan="3" class="border-start border-0 border-secondary">'.$data['deposit'].'</td>
+                            </tr>
+                            <tr class="border-3 border-secondary">
+                                <td colspan="1" class="border-end-0 border-3 border-secondary">租金</td>
+                                <td colspan="3" class="border-start border-0 border-secondary">'.$data['rent'].'</td>
+                                <td colspan="1" class="border-end-0 border-3 border-secondary">水電費</td>
+                                <td colspan="3" class="border-start border-0 border-secondary">'.$data['utility_bill'].'</td>
+                                <td colspan="1" class="border-end-0 border-3 border-secondary">車位</td>
+                                <td colspan="3" class="border-start border-0 border-secondary">'.$data['parking'].'</td>
+                            </tr>
+                            <tr class="border-3 border-secondary">
+                                <td colspan="2" class="border-end-0 border-3 border-secondary">家具設備</td>
+                                <td colspan="4" class="border-start border-0 border-secondary">'.$data['furniture'].'</td>
+                                <td colspan="2" class="border-end-0 border-3 border-secondary">公共設施</td>
+                                <td colspan="4" class="border-start border-0 border-secondary">'.$data['public'].'</td>
+                            </tr>
+                            <tr class="border-3 border-secondary">
+                                <td colspan="1"  class=" class="border-end-0 border-3 border-secondary">其他</td>
+                                <td colspan="11" class=" class="border-start border-0 border-secondary">'.$data['others'].'</td>
+                            </tr>
+                            <tr style="visibility: collapse;" class="border-3 border-secondary">
+                                <td class="col-md-1"></td>
+                                <td class="col-md-1"></td>
+                                <td class="col-md-1"></td>
+                                <td class="col-md-1"></td>
+                                <td class="col-md-1"></td>
+                                <td class="col-md-1"></td>
+                                <td class="col-md-1"></td>
+                                <td class="col-md-1"></td>
+                                <td class="col-md-1"></td>
+                                <td class="col-md-1"></td>
+                                <td class="col-md-1"></td>
+                                <td class="col-md-1"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-3 border border-2">
+                        <p><p>
+                        <div style="border:10px solid;width:20px;height:20px;border-radius:50%;color:'.$color.';"></div><h4>'.$remain_D.'</h4>
+                        <p></p><h3>聯絡屋主</h3>
+                        電話號碼：'.$ownerdata['phone'].'<br>
+                        電子郵件：'.$ownerdata['email'].'<br>
+                        <p><p>
+                        <form method="post" action="_add_keep.php">
+                            <input type="hidden" name="ID" value="'.$_GET['id'].'">
+                            <input class="btn btn-info" type="submit" name="submit" value="加入收藏">
+                        </form>
+                    </div>
+                </div>';
         }else{
             echo '<script>alert("無此房屋資料!");history.back();</script>';
         }
         ?>
-    </section>
-    <section class="container">
-        <hr>
-        <div class="col-md-12">
-            <h2>屋主說明</h2>
-        </div>
-        <div class="col-md-12"><?php echo $data['description']; ?></div>
-        <p><p><p></p></p></p>
-        <div class="col-md-12">
-            <form method="post" action="_add_keep.php">
-                <input type="hidden" name="ID" value="<?php echo $_GET['id']; ?>">
-                <input class="btn btn-info" type="submit" name="submit" value="加入收藏">
-            </form>
-        </div>
     </section>
     <section class="container">
 

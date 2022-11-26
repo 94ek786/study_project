@@ -13,7 +13,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <?php include 'js/module_basic.php'; ?>
     <script>
-        function p(){
+        function p(i){
+            try {
+                document.getElementById('checkbox'+i).checked = false;
+            } catch (error) {
+                
+            }
             document.getElementById('submit').click();
         }
     </script>
@@ -85,14 +90,14 @@
                     <div class="collapse d-md-block" id="filter">
                         <div class="card card-body" style="background-color: lightgray;">
                             搜尋細項
-                            <div><input Onclick="p()" type="checkbox" name="remain" value="1" <?php if(isset($_GET['remain']) && $_GET['remain'] == '1'){echo 'checked';} ?>>目前有空房<br></div>
-                            <div><input Onclick="p()" type="checkbox" name="parking" value="有" <?php if(isset($_GET['parking']) && $_GET['parking'] == '有'){echo 'checked';} ?>>有停車位<br></div>
+                            <div><input Onclick="p(0)" type="checkbox" name="remain" value="1" <?php if(isset($_GET['remain']) && $_GET['remain'] == '1'){echo 'checked';} ?>>目前有空房<br></div>
+                            <div><input Onclick="p(0)" type="checkbox" name="parking" value="有" <?php if(isset($_GET['parking']) && $_GET['parking'] == '有'){echo 'checked';} ?>>有停車位<br></div>
                             <p></p>
                             排序方法
-                            <div><input Onclick="p()" type="checkbox" name="sort" value="1" <?php if(isset($_GET['sort']) && $_GET['sort'] == '1'){echo 'checked';} ?>>最新上架<br></div>
-                            <div><input Onclick="p()" type="checkbox" name="sort" value="1" <?php if(isset($_GET['sort']) && $_GET['sort'] == '1'){echo 'checked';} ?>>最早上架<br></div>
-                            <div><input Onclick="p()" type="checkbox" name="sort" value="1" <?php if(isset($_GET['sort']) && $_GET['sort'] == '1'){echo 'checked';} ?>>價格最高<br></div>
-                            <div><input Onclick="p()" type="checkbox" name="sort" value="1" <?php if(isset($_GET['sort']) && $_GET['sort'] == '1'){echo 'checked';} ?>>價格最低<br></div>
+                            <div><input id="checkbox1" Onclick="p(<?php if(isset($_GET['sort'])){echo $_GET['sort'];} ?>)" type="checkbox" name="sort" value="1" <?php if(isset($_GET['sort']) && $_GET['sort'] == '1'){echo 'checked';}elseif(isset($_GET['sort'])!=true){echo 'checked';} ?>>最新上架<br></div>
+                            <div><input id="checkbox2" Onclick="p(<?php if(isset($_GET['sort'])){echo $_GET['sort'];} ?>)" type="checkbox" name="sort" value="2" <?php if(isset($_GET['sort']) && $_GET['sort'] == '2'){echo 'checked';} ?>>最早上架<br></div>
+                            <div><input id="checkbox3" Onclick="p(<?php if(isset($_GET['sort'])){echo $_GET['sort'];} ?>)" type="checkbox" name="sort" value="3" <?php if(isset($_GET['sort']) && $_GET['sort'] == '3'){echo 'checked';} ?>>價格最高<br></div>
+                            <div><input id="checkbox4" Onclick="p(<?php if(isset($_GET['sort'])){echo $_GET['sort'];} ?>)" type="checkbox" name="sort" value="4" <?php if(isset($_GET['sort']) && $_GET['sort'] == '4'){echo 'checked';} ?>>價格最低<br></div>
                         </div>
                     </div>
                 </div>
