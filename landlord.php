@@ -117,26 +117,72 @@ $GLOBALS["n"] = 4;
         if(isset($_GET['no_matamask']) != true){
             echo '<p></p>
                 <h1>開啟的合約</h1>
-                <p></p>';
-            $sql = "SELECT * FROM contract WHERE landlord_ID ='".$GLOBALS["username"]."'";
+                <p></p>
+                <table class="table table-bordered">
+                <tr>
+                    <th scope="col-md-3">地址</th>
+                    <th scope="col-md-2">首都</th>
+                    <th scope="col-md-2">月租金</th>
+                    <th scope="col-md-2">押金</th>
+                    <th scope="col-md-3">簽約人地址</th>
+                </tr>';
+            $sql = "SELECT ID FROM contract WHERE landlord_ID ='".$GLOBALS["username"]."'";
             $result = mysqli_query($conn,$sql);
             $loop = 1;
+            //$num = mysqli_num_rows($result);
+            //echo '<script>alert("有'.$num.'筆資料");</script>';
             while ($row = $result->fetch_assoc()) {
                 echo '
-                    <div class="row">
-                        <div class="col-md">地址<div id="contract'.$loop.'"></div></div>
-                    </div>
+                    <tr>
+                        <td> 
+                            <div class="row">
+                            <div id="houseaddress'.$loop.'"></div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="row">
+                            <div id="housename'.$loop.'"></div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="row">
+                            <div id="rent_per_month'.$loop.'"></div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="row">
+                            <div id="securityDeposit'.$loop.'"></div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="row">
+                            <div id="tenantVerify'.$loop.'"></div>
+                            </div>
+                        </td>
+                    </tr>
                     <script>
                         $(document).ready(function() {
                             i = '.$row['ID'].';
-                            loadcontract(i).then(v => {
-                                document.getElementById("contract'.$loop.'").innerHTML = v;
-                                // alert (v);   prints 60 after 4 seconds.
+                            houseaddress(i).then(v => {
+                                document.getElementById("houseaddress'.$loop.'").innerHTML = v;
+                            });
+                            tenantVerify(i).then(v => {
+                                document.getElementById("tenantVerify'.$loop.'").innerHTML = v;
+                            });
+                            housename(i).then(v => {
+                                document.getElementById("housename'.$loop.'").innerHTML = v;
+                            });
+                            rent_per_month(i).then(v => {
+                                document.getElementById("rent_per_month'.$loop.'").innerHTML = v;
+                            });
+                            securityDeposit(i).then(v => {
+                                document.getElementById("securityDeposit'.$loop.'").innerHTML = v;
                             });
                         });
                     </script>';
                 $loop++;
             }
+            echo '</table>';
         }
         ?>
     </section>

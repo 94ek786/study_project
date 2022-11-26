@@ -13,27 +13,29 @@ window.addEventListener('load', async() => {
     } else {
         if (typeof landlord_n === 'undefined') {
             alert("請先安裝MetaMask");
+            history.back();
         } else {
             url_c();
         }
     }
 });
 
-//判斷landlord.php
+//判斷會員是否安裝
 function url_c() {
     var url = window.location.href;
     try {
         var i = url.split('no_matamask=')[1].split('&')[0];
     } catch (error) {
-        window.location = 'landlord.php?no_matamask=true&';
+        window.location = window.location.pathname + '?no_matamask=true&';
     }
     if (i != 'true') {
-        window.location = 'landlord.php?no_matamask=true&';
+        window.location = window.location.pathname + '?no_matamask=true&';
     }
 }
 
+
 function startApp() {
-    var name1 = '0x433Bf0cC0b41569b7b507be587d296636a122615';
+    var name1 = '0x86a6182fC51C7d81013Bdb67688C71B88bDDb8C3';
     search = new web3js.eth.Contract(LeaseContract, name1);
     userAccount = web3.currentProvider.selectedAddress;
 
@@ -65,25 +67,58 @@ function resolveAfter2Seconds(x) {
     });
 }
 
-async function loadcontract(id) {
+async function tenantVerify(id) {
+    userAccount = web3.currentProvider.selectedAddress;
+    const a = await resolveAfter2Seconds(20);
+
+    var tenantVerify = await search.methods.tenantVerify(id).call({
+        from: userAccount
+    });
+    var contract = tenantVerify;
+    return contract;
+
+}
+async function houseaddress(id) {
+    userAccount = web3.currentProvider.selectedAddress;
+    const a = await resolveAfter2Seconds(20);
+
+    var houseaddress = await search.methods.houseaddress(id).call({
+        from: userAccount
+    });
+    var contract = houseaddress;
+    return contract;
+
+}
+async function housename(id) {
     userAccount = web3.currentProvider.selectedAddress;
     const a = await resolveAfter2Seconds(20);
     var housename = await search.methods.housename(id).call({
         from: userAccount
     });
-    var houseaddress = await search.methods.houseaddress(id).call({
-        from: userAccount
-    });
+    var contract = housename;
+    return contract;
+}
+async function rent_per_month(id) {
+    userAccount = web3.currentProvider.selectedAddress;
+    const a = await resolveAfter2Seconds(20);
+
     var rent_per_month = await search.methods.rent_per_month(id).call({
         from: userAccount
     });
+
+    var contract = rent_per_month;
+    return contract;
+
+}
+async function securityDeposit(id) {
+    userAccount = web3.currentProvider.selectedAddress;
+    const a = await resolveAfter2Seconds(20);
+
     var securityDeposit = await search.methods.securityDeposit(id).call({
         from: userAccount
     });
-    var tenantVerify = await search.methods.tenantVerify(id).call({
-        from: userAccount
-    });
-    var contract = housename + "房租" + houseaddress;
+
+    var contract = securityDeposit;
     return contract;
 
 }

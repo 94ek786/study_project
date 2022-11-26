@@ -84,12 +84,15 @@
                     </button>
                     <div class="collapse d-md-block" id="filter">
                         <div class="card card-body" style="background-color: lightgray;">
-                            搜尋細項<p></p>
+                            搜尋細項
                             <div><input Onclick="p()" type="checkbox" name="remain" value="1" <?php if(isset($_GET['remain']) && $_GET['remain'] == '1'){echo 'checked';} ?>>目前有空房<br></div>
-                            <div><input Onclick="p()" type="checkbox" name="parking" value="1" <?php if(isset($_GET['parking']) && $_GET['parking'] == '1'){echo 'checked';} ?>>有停車位<br></div>
+                            <div><input Onclick="p()" type="checkbox" name="parking" value="有" <?php if(isset($_GET['parking']) && $_GET['parking'] == '有'){echo 'checked';} ?>>有停車位<br></div>
                             <p></p>
-                            排序方法<p></p>
-                            <div><input Onclick="p()" type="checkbox" name="sort" value="1">日期最早<br></div>
+                            排序方法
+                            <div><input Onclick="p()" type="checkbox" name="sort" value="1" <?php if(isset($_GET['sort']) && $_GET['sort'] == '1'){echo 'checked';} ?>>最新上架<br></div>
+                            <div><input Onclick="p()" type="checkbox" name="sort" value="1" <?php if(isset($_GET['sort']) && $_GET['sort'] == '1'){echo 'checked';} ?>>最早上架<br></div>
+                            <div><input Onclick="p()" type="checkbox" name="sort" value="1" <?php if(isset($_GET['sort']) && $_GET['sort'] == '1'){echo 'checked';} ?>>價格最高<br></div>
+                            <div><input Onclick="p()" type="checkbox" name="sort" value="1" <?php if(isset($_GET['sort']) && $_GET['sort'] == '1'){echo 'checked';} ?>>價格最低<br></div>
                         </div>
                     </div>
                 </div>
@@ -109,31 +112,37 @@
                     }else{
                         $county = "IS NOT NULL";
                     }
+                    echo '<script>console.log("county:'.$county.'");</script>';
                     if(isset($_GET['township']) && $_GET['township'] != $N){
                         $township = "like '".$_GET['township']."%'";
                     }else{
                         $township = "IS NOT NULL";
                     }
+                    echo '<script>console.log("township:'.$township.'");</script>';
                     if(isset($_GET['rentL']) && $_GET['rentL'] != $N){
                         $rentL = ">= '".$_GET['rentL']."'";
                     }else{
                         $rentL = "IS NOT NULL";
                     }
+                    echo '<script>console.log("rentL:'.$rentL.'");</script>';
                     if(isset($_GET['rentH']) && $_GET['rentH'] != $N){
                         $rentH = "<= '".$_GET['rentH']."'";
                     }else{
                         $rentH = "IS NOT NULL";
                     }
-                    if(isset($_POST['parking']) && $POST['parking'] != $N){
-                        $parking = "= '".$_POST['parking']."'";
+                    echo '<script>console.log("rentH:'.$rentH.'");</script>';
+                    if(isset($_GET['parking']) && $_GET['parking'] != $N){
+                        $parking = "= '".$_GET['parking']."'";
                     }else{
                         $parking = "IS NOT NULL";
                     }
-                    if(isset($_POST['remain']) && $_POST['remain'] != $N){
-                        $remain = "= '".$_POST['remain']."'";
+                    echo '<script>console.log("parking:'.$parking.'");</script>';
+                    if(isset($_GET['remain']) && $_GET['remain'] != $N){
+                        $remain = "= '".$_GET['remain']."'";
                     }else{
                         $remain = "IS NOT NULL";
                     }
+                    echo '<script>console.log("remain:'.$remain.'");</script>';
                     $conn=require_once "config.php";
                     $sql = "SELECT count( * ) as count FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." and parking ".$parking." and remain ".$remain." and img='1'";
                     $result = mysqli_query($conn,$sql);
