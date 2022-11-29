@@ -102,6 +102,11 @@
                     </div>
                 </div>
             </form>
+                <script>
+                    if(<?php if(isset($_GET['sort'])!=true){echo '1';}else{echo '0';} ?> == '1'){
+                        p(0);
+                    }
+                </script>
                 <div id="latest" class="col-md-9">
                     <?php
                     if(isset($_GET['page'])){
@@ -147,6 +152,15 @@
                     }else{
                         $remain = "IS NOT NULL";
                     }
+                    if($_GET['sort'] == '1'){
+                        $sort = 'ID DESC';
+                    }elseif($_GET['sort'] == '2'){
+                        $sort = 'ID';
+                    }elseif($_GET['sort'] == '3'){
+                        $sort = 'rent DESC';
+                    }elseif($_GET['sort'] == '4'){
+                        $sort = 'rent';
+                    }
                     echo '<script>console.log("remain:'.$remain.'");</script>';
                     $conn=require_once "config.php";
                     $sql = "SELECT count( * ) as count FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." and parking ".$parking." and remain ".$remain." and img='1'";
@@ -154,7 +168,7 @@
                     $data = $result->fetch_assoc();
                     $count = $data['count'];
                     echo '<script>console.log("此收尋條件總共有'.$count.'筆資料");</script>';
-                    $sql = "SELECT ID, title, description, rent FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." and parking ".$parking." and remain ".$remain." and img='1' LIMIT ".$pageB.",".$pageT."";
+                    $sql = "SELECT ID, title, description, rent FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." and parking ".$parking." and remain ".$remain." and img='1' ORDER BY ".$sort." LIMIT ".$pageB.",".$pageT."";
                     $result = mysqli_query($conn,$sql);
                     if(mysqli_num_rows($result)!=0){
                         $i = 0;
