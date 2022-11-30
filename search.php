@@ -98,6 +98,8 @@
                             <div><input id="checkbox2" Onclick="p(<?php if(isset($_GET['sort'])){echo $_GET['sort'];} ?>)" type="checkbox" name="sort" value="2" <?php if(isset($_GET['sort']) && $_GET['sort'] == '2'){echo 'checked';} ?>>最早上架<br></div>
                             <div><input id="checkbox3" Onclick="p(<?php if(isset($_GET['sort'])){echo $_GET['sort'];} ?>)" type="checkbox" name="sort" value="3" <?php if(isset($_GET['sort']) && $_GET['sort'] == '3'){echo 'checked';} ?>>價格最高<br></div>
                             <div><input id="checkbox4" Onclick="p(<?php if(isset($_GET['sort'])){echo $_GET['sort'];} ?>)" type="checkbox" name="sort" value="4" <?php if(isset($_GET['sort']) && $_GET['sort'] == '4'){echo 'checked';} ?>>價格最低<br></div>
+                            <p></p>
+                            <div>跳至第幾頁<input id="page" name="page" type="number" value="<?php if(isset($_GET['page'])){echo $_GET['page'];}else{echo 1;} ?>"></div>
                         </div>
                     </div>
                 </div>
@@ -106,15 +108,19 @@
                     if(<?php if(isset($_GET['sort'])!=true){echo '1';}else{echo '0';} ?> == '1'){
                         p(0);
                     }
+                    if(<?php if(isset($_GET['county']) && $_GET['page'] == ''){echo true;} ?>){
+                        document.getElementById('page').value = 1
+                        p(0);
+                    }
                 </script>
                 <div id="latest" class="col-md-9">
                     <?php
                     if(isset($_GET['page'])){
-                        $pageB = $_GET['page']*15;
-                        $pageT = $_GET['page']*15+14;
+                        $pageB = ($_GET['page']-1)*15;
+                        $pageT = ($_GET['page']-1)*15+14;
                     }else{
                         $pageB = 0;
-                        $pageT = 9;
+                        $pageT = 14;
                     }
                     $N = '';
                     if(isset($_GET['county']) && $_GET['county'] != $N){
