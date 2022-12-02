@@ -120,8 +120,8 @@ $GLOBALS["n"] = 4;
                 <p></p>
                 <table class="table table-bordered">
                 <tr>
-                    <th scope="col-md-3">地址</th>
-                    <th scope="col-md-2">首都</th>
+                    <th scope="col-md-3">標題</th>
+                    <th scope="col-md-2">地址</th>
                     <th scope="col-md-2">月租金</th>
                     <th scope="col-md-2">押金</th>
                     <th scope="col-md-3">簽約人地址</th>
@@ -136,12 +136,12 @@ $GLOBALS["n"] = 4;
                     <tr>
                         <td> 
                             <div class="row">
-                            <div id="houseaddress'.$loop.'"></div>
+                            <div id="housename'.$loop.'"></div>
                             </div>
                         </td>
                         <td>
                             <div class="row">
-                            <div id="housename'.$loop.'"></div>
+                            <div id="houseaddress'.$loop.'"></div>
                             </div>
                         </td>
                         <td>

@@ -14,10 +14,8 @@
     <?php include 'js/module_basic.php'; ?>
     <script>
         function p(i){
-            try {
+            if(i<10){
                 document.getElementById('checkbox'+i).checked = false;
-            } catch (error) {
-                
             }
             document.getElementById('submit').click();
         }
@@ -105,12 +103,15 @@
                 </div>
             </form>
                 <script>
-                    if(<?php if(isset($_GET['sort'])!=true){echo '1';}else{echo '0';} ?> == '1'){
-                        p(0);
-                    }
-                    if(<?php if(isset($_GET['county']) && $_GET['page'] == ''){echo true;} ?>){
+                    if(<?php if(isset($_GET['page'])!=true){echo '1';}else{echo '0';} ?> == 1){
                         document.getElementById('page').value = 1
-                        p(0);
+                        p(11);
+                    }else if(<?php if(empty($_GET['page'])){echo '1';}else{echo '0';} ?> == 1){
+                        document.getElementById('page').value = 1
+                        p(11);
+                    }
+                    if(<?php if(isset($_GET['sort'])!=true){echo '1';}else{echo '0';} ?> == 1){
+                        p(12);
                     }
                 </script>
                 <div id="latest" class="col-md-9">
