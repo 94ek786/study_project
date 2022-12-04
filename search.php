@@ -13,13 +13,42 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <?php include 'js/module_basic.php'; ?>
     <script>
-        function p(i){
-            if(i<10){
+        function p(i,p){
+            if(i!=0){
                 document.getElementById('checkbox'+i).checked = false;
+            }
+            if(p != 0){
+                document.getElementById('page').value = p;
             }
             document.getElementById('submit').click();
         }
     </script>
+    <?php
+    function pagen(){
+        echo '<div style="display: flex;justify-content: center;">';
+        if(($_GET['page']-2) > 1){
+            echo '<div class="btn btn-secondary page" Onclick="p(0,1)">第1頁</div><div style="width:10%;"></div>';
+            $loop = $_GET['page']-2;
+        }else{
+            $loop = 1;
+        }
+        $loop1 = 0;
+        while($loop <= $GLOBALS['pageC'] && $loop1 < 5){
+            if($loop != $_GET['page']){
+                echo '<div class="btn btn-secondary page" Onclick="p(0,'.$loop.')">第'.$loop.'頁</div>';
+            }else{
+                echo '<div class="btn btn-secondary page disabled">第'.$loop.'頁</div>';
+            }
+            $loop1++;
+            $loop++;
+            
+        }
+        if(($_GET['page']+2) < $GLOBALS['pageC']){
+            echo '<div style="width:10%;"></div><div class="btn btn-secondary page" Onclick="p(0,'.$_GET['page'].')">第'.$_GET['page'].'頁</div>';
+        }
+        echo '</div>';
+    }
+    ?>
 </head>
 
 <body>
@@ -88,14 +117,14 @@
                     <div class="collapse d-md-block" id="filter">
                         <div class="card card-body" style="background-color: lightgray;">
                             搜尋細項
-                            <div><input Onclick="p(0)" type="checkbox" name="remain" value="1" <?php if(isset($_GET['remain']) && $_GET['remain'] == '1'){echo 'checked';} ?>>目前有空房<br></div>
-                            <div><input Onclick="p(0)" type="checkbox" name="parking" value="有" <?php if(isset($_GET['parking']) && $_GET['parking'] == '有'){echo 'checked';} ?>>有停車位<br></div>
+                            <div><input Onclick="p(0,0)" type="checkbox" name="remain" value="1" <?php if(isset($_GET['remain']) && $_GET['remain'] == '1'){echo 'checked';} ?>>目前有空房<br></div>
+                            <div><input Onclick="p(0,0)" type="checkbox" name="parking" value="有" <?php if(isset($_GET['parking']) && $_GET['parking'] == '有'){echo 'checked';} ?>>有停車位<br></div>
                             <p></p>
                             排序方法
-                            <div><input id="checkbox1" Onclick="p(<?php if(isset($_GET['sort'])){echo $_GET['sort'];} ?>)" type="checkbox" name="sort" value="1" <?php if(isset($_GET['sort']) && $_GET['sort'] == '1'){echo 'checked';}elseif(isset($_GET['sort'])!=true){echo 'checked';} ?>>最新上架<br></div>
-                            <div><input id="checkbox2" Onclick="p(<?php if(isset($_GET['sort'])){echo $_GET['sort'];} ?>)" type="checkbox" name="sort" value="2" <?php if(isset($_GET['sort']) && $_GET['sort'] == '2'){echo 'checked';} ?>>最早上架<br></div>
-                            <div><input id="checkbox3" Onclick="p(<?php if(isset($_GET['sort'])){echo $_GET['sort'];} ?>)" type="checkbox" name="sort" value="3" <?php if(isset($_GET['sort']) && $_GET['sort'] == '3'){echo 'checked';} ?>>價格最高<br></div>
-                            <div><input id="checkbox4" Onclick="p(<?php if(isset($_GET['sort'])){echo $_GET['sort'];} ?>)" type="checkbox" name="sort" value="4" <?php if(isset($_GET['sort']) && $_GET['sort'] == '4'){echo 'checked';} ?>>價格最低<br></div>
+                            <div><input id="checkbox1" Onclick="p(<?php if(isset($_GET['sort'])){echo $_GET['sort'];} ?>,0)" type="checkbox" name="sort" value="1" <?php if(isset($_GET['sort']) && $_GET['sort'] == '1'){echo 'checked';}elseif(isset($_GET['sort'])!=true){echo 'checked';} ?>>最新上架<br></div>
+                            <div><input id="checkbox2" Onclick="p(<?php if(isset($_GET['sort'])){echo $_GET['sort'];} ?>,0)" type="checkbox" name="sort" value="2" <?php if(isset($_GET['sort']) && $_GET['sort'] == '2'){echo 'checked';} ?>>最早上架<br></div>
+                            <div><input id="checkbox3" Onclick="p(<?php if(isset($_GET['sort'])){echo $_GET['sort'];} ?>,0)" type="checkbox" name="sort" value="3" <?php if(isset($_GET['sort']) && $_GET['sort'] == '3'){echo 'checked';} ?>>價格最高<br></div>
+                            <div><input id="checkbox4" Onclick="p(<?php if(isset($_GET['sort'])){echo $_GET['sort'];} ?>,0)" type="checkbox" name="sort" value="4" <?php if(isset($_GET['sort']) && $_GET['sort'] == '4'){echo 'checked';} ?>>價格最低<br></div>
                             <p></p>
                             <div>跳至第幾頁<input id="page" name="page" type="number" value="<?php if(isset($_GET['page'])){echo $_GET['page'];}else{echo 1;} ?>"></div>
                         </div>
@@ -104,14 +133,12 @@
             </form>
                 <script>
                     if(<?php if(isset($_GET['page'])!=true){echo '1';}else{echo '0';} ?> == 1){
-                        document.getElementById('page').value = 1
-                        p(11);
+                        p(0,1);
                     }else if(<?php if(empty($_GET['page'])){echo '1';}else{echo '0';} ?> == 1){
-                        document.getElementById('page').value = 1
-                        p(11);
+                        p(0,1);
                     }
                     if(<?php if(isset($_GET['sort'])!=true){echo '1';}else{echo '0';} ?> == 1){
-                        p(12);
+                        p(0,0);
                     }
                 </script>
                 <div id="latest" class="col-md-9">
@@ -175,6 +202,11 @@
                     $data = $result->fetch_assoc();
                     $count = $data['count'];
                     echo '<script>console.log("此收尋條件總共有'.$count.'筆資料");</script>';
+                    $GLOBALS['pageC'] = ceil($count/15);
+                    echo '<script>console.log("此收尋條件總共有'.$GLOBALS['pageC'].'頁資料");</script>';
+
+                    pagen();
+
                     $sql = "SELECT ID, title, description, rent FROM house WHERE county ".$county." and township ".$township." and rent ".$rentL." and rent ".$rentH." and parking ".$parking." and remain ".$remain." and img='1' ORDER BY ".$sort." LIMIT ".$pageB.",".$pageT."";
                     $result = mysqli_query($conn,$sql);
                     if(mysqli_num_rows($result)!=0){
@@ -204,7 +236,7 @@
                     }else{
                         echo '<H1>無房屋資料</H1>';
                     }
-                    
+                    pagen();
                     ?>
                 </div>
             </div>

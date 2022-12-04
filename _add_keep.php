@@ -5,6 +5,9 @@ $conn=require_once "config.php";
 if($_SERVER["REQUEST_METHOD"] != "POST"){
     header('location:login.php');
 }
+if($GLOBALS['username'] == ){
+    header('location:login.php');
+}
 $check="SELECT * FROM collect WHERE user='".$GLOBALS['username']."' and house='".$_POST['ID']."'";
 $result = mysqli_query($conn,$check);
 if(mysqli_num_rows($result)==0){

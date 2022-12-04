@@ -199,7 +199,7 @@ function objectA(id, rent, title, description) {
                                     <div class="upper">\
                                         <img src="img/Himg_'+ String(id) +'_1.png" onerror="this.src=`img/Himg_'+ String(id) +'_1.jpg`" alt="一張圖片">\
                                         <div class="innertext">\
-                                            <span>'+ String(rent) +'</span>\
+                                            <span>'+ String(rent) +'元/月</span>\
                                         </div>\
                                     </div>\
                                     <div class="lower">\
